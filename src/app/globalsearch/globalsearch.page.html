@@ -27,8 +27,9 @@ translate.currentLang ? 'font-' + translate.currentLang : ''
       <ion-input
         placeholder="i.e. Facial"
         [(ngModel)]="searchString"
-        (ionInput)="getServiceOrStore()"
+        (ionChange)="getServiceOrStore()"
       ></ion-input>
+      <!-- (ionInput)="getServiceOrStore()" -->
       <!-- debounce="500" -->
     </ion-item>
   </ion-toolbar>

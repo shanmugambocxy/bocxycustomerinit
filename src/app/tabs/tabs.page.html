@@ -45,8 +45,18 @@ translate.currentLang ? 'font-' + translate.currentLang : ''
     slot="fixed"
     class="home-fab"
   >
-    <ion-fab-button color="light">
+    <!-- <ion-fab-button color="light">
       <img src="./assets/icon/bocxy_icon.svg" />
+    </ion-fab-button> -->
+    <ion-fab-button color="light" (click)="openLink()">
+      <div style="display: grid;">
+        <img src="./assets/icon/bocxy_icon.svg"  style="display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 70%;"/>
+<span style="margin-top: -5px;
+font-size: xx-small;">Products</span>
+      </div>
     </ion-fab-button>
   </ion-fab>
 </ion-tabs>

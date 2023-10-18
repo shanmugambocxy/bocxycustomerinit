@@ -133,6 +133,7 @@ export class LoginPage implements OnInit {
     this.passwordErr = false;
   }
   login() {
+    debugger
     this.formSubmitted = true;
     if (this.loginForm.valid) {
 

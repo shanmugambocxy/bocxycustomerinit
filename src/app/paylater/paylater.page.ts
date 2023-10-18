@@ -29,7 +29,8 @@ export class PaylaterPage implements OnInit {
     private toast: ToastService,
     private loadingCtrl: LoadingController,
     private nav: NavigationHandler,
-    private dateService: DateService
+    private dateService: DateService,
+    public navCtrl: NavController,
   ) { }
 
   async ngOnInit() {
@@ -46,6 +47,8 @@ export class PaylaterPage implements OnInit {
 
   goBack(url: string) {
     this.nav.GoBackTo(url);
+    // this.navCtrl.navigateRoot('/home');
+
   }
 
   getAppointmentDetails() {

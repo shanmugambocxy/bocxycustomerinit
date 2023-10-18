@@ -40,7 +40,10 @@ export class GlobalsearchPage implements OnInit {
   }
 
   async getServiceOrStore() {
-    if (this.searchString && this.searchString.length >= 3) {
+    debugger
+    // if (this.searchString && this.searchString.length >= 3) {
+      if (this.searchString ) {
+
       return new Promise(async (resolve, reject) => {
         const param = await this.getStoreParameter();
         const query = `search=${this.searchString}&${param}`;

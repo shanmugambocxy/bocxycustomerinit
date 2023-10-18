@@ -73,6 +73,7 @@ translate.currentLang ? 'font-' + translate.currentLang : ''
                 (input)="changePhone()"
                 (keypress)="numberValidate($event)"
                 #ngTelInput
+                maxlength="10"
               />
             </div>
             <ion-button
