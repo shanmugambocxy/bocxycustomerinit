@@ -4,10 +4,12 @@
 
 export const environment = {
   production: false,
-  // apiUrl: 'https://api.bocxy.com/',
+  apiUrl: 'https://api.bocxy.com/',
+  productUrl:'https://ecomm.bocxy.com/'
+
   // apiUrl: 'https://devapi.bocxy.com/',
   // apiUrl: 'http://192.168.118.2:50080/',
-  apiUrl: 'http://localhost:50080/',
+  // apiUrl: 'http://localhost:50080/',
 };
 
 /*

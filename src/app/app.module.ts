@@ -42,6 +42,8 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 // ngx-translate
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+//inappbrowser
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -90,7 +92,8 @@ export function createTranslateLoader(http: HttpClient) {
     Facebook,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ErrorhandlerService,
-    DashboardService
+    DashboardService,
+    InAppBrowser
   ],
   bootstrap: [AppComponent]
 })
