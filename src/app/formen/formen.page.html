@@ -1,18 +1,13 @@
-<ion-header
-  class="ion-no-border"
-  [ngClass]="
+<ion-header class="ion-no-border" [ngClass]="
 translate.currentLang ? 'font-' + translate.currentLang : ''
-"
->
+">
   <ion-toolbar color="light">
     <ion-buttons slot="start">
       <ion-button (click)="goBack()">
         <ion-icon class="back-btn-size" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title
-      >{{'ALL_SERVICES_ITEMS.ALL_SERVICES_TITLE' | translate}}</ion-title
-    >
+    <ion-title>{{'ALL_SERVICES_ITEMS.ALL_SERVICES_TITLE' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 <!--Category Filter-->
@@ -22,21 +17,18 @@ translate.currentLang ? 'font-' + translate.currentLang : ''
     <div class="scrolling-wrapper">
       <div class="card">
         <ion-item class="category-item" lines="none">
-          <ion-button
-            *ngFor="let item of categories; let i = index"
-            (click)="changeState(i, item)"
-            [ngClass]="selectedIndex === i  ? 'selected-btn' : ''"
-            expand="full"
-            size="small"
-            [color]="selectedIndex === i ? 'primary':'medium'"
-            [fill]="selectedIndex === i ? 'solid':'outline'"
-            shape="round"
-            class="category-button"
-            >{{item.name}}</ion-button
-          >
+          <ion-button *ngFor="let item of categories; let i = index" (click)="changeState(i, item)"
+            [ngClass]="selectedIndex === i  ? 'selected-btn' : ''" expand="full" size="small"
+            [color]="selectedIndex === i ? 'primary':'medium'" [fill]="selectedIndex === i ? 'solid':'outline'"
+            shape="round" class="category-button">{{item.name}}</ion-button>
         </ion-item>
       </div>
     </div>
+  </ion-toolbar>
+</ion-header>
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-searchbar placeholder="Search for services" (ionInput)="filterservice($event)"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen>
@@ -56,8 +48,7 @@ translate.currentLang ? 'font-' + translate.currentLang : ''
             <ion-card-title>{{service.serviceName}}</ion-card-title>
             <ion-card-subtitle class="pt-4">
               <span class="icon-shop color-dark"></span>
-              {{service.storeName}}</ion-card-subtitle
-            >
+              {{service.storeName}}</ion-card-subtitle>
             <ion-card-subtitle class="pt-4">
               <span class="icon-location color-dark"></span>
               {{service.location}}
@@ -77,9 +68,7 @@ translate.currentLang ? 'font-' + translate.currentLang : ''
               </h1>
               <!--If no price-->
               <div *ngIf="!service.price">
-                <ion-badge class="no-price ion-text-wrap" color="secondary"
-                  >Price depends after consulting</ion-badge
-                >
+                <ion-badge class="no-price ion-text-wrap" color="secondary">Price depends after consulting</ion-badge>
               </div>
               <!--//If no price-->
               <div>
@@ -87,11 +76,7 @@ translate.currentLang ? 'font-' + translate.currentLang : ''
               </div>
             </ion-card-subtitle>
             <ion-card-subtitle class="pt-4">
-              <ion-icon
-                *ngIf="service.distance"
-                name="time-outline"
-                class="icon-space"
-              ></ion-icon>
+              <ion-icon *ngIf="service.distance" name="time-outline" class="icon-space"></ion-icon>
               {{service.distance}}
             </ion-card-subtitle>
           </ion-col>
@@ -102,40 +87,23 @@ translate.currentLang ? 'font-' + translate.currentLang : ''
         <ion-row>
           <ion-col size="8">
             <p class="see-all-service-btn">
-              <ion-button
-                fill="clear"
-                class="ion-no-margin ion-no-padding"
-                (click)="navigateToAllServices(service)"
-              >
+              <ion-button fill="clear" class="ion-no-margin ion-no-padding" (click)="navigateToAllServices(service)">
                 <ion-icon name="arrow-forward-circle-outline"></ion-icon>
                 See all the services
               </ion-button>
             </p>
           </ion-col>
           <ion-col size="4" class="ion-text-center">
-            <ion-button
-              shape="round"
-              expand="block"
-              size="small"
-              color="primary"
-              class="btn-small book-now"
-              (click)="bookNow(service.merchantStoreServiceId)"
-            >
+            <ion-button shape="round" expand="block" size="small" color="primary" class="btn-small book-now"
+              (click)="bookNow(service.merchantStoreServiceId)">
               Book Now
             </ion-button>
           </ion-col>
         </ion-row>
       </ion-card-content>
     </ion-card>
-    <ion-infinite-scroll
-      *ngIf="page < totalPages"
-      threshold="100px"
-      (ionInfinite)="loadMoreData($event)"
-    >
-      <ion-infinite-scroll-content
-        loadingSpinner="bubbles"
-        loadingText="Loading..."
-      >
+    <ion-infinite-scroll *ngIf="page < totalPages" threshold="100px" (ionInfinite)="loadMoreData($event)">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading...">
       </ion-infinite-scroll-content>
     </ion-infinite-scroll>
   </div>
@@ -146,13 +114,9 @@ translate.currentLang ? 'font-' + translate.currentLang : ''
       Currently no services to show
     </h5>
   </div>
-  <div
-    class="no-service"
-    *ngIf="!selectLocation"
-    [ngClass]="
+  <div class="no-service" *ngIf="!selectLocation" [ngClass]="
   translate.currentLang ? 'font-' + translate.currentLang : ''
-  "
-  >
+  ">
     <h5>
       <div class="nothing-to-show"></div>
       <br />

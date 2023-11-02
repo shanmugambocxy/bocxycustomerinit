@@ -71,6 +71,7 @@ export class Tab1Page implements OnInit {
   }
 
   async openLocationSearch() {
+    debugger
     const storeType = await this.storage.get('storeSelectionBy');
     const modal = await this.modalController.create({
       component: FindstorePage,
@@ -96,6 +97,7 @@ export class Tab1Page implements OnInit {
   }
 
   async openServiceSearch() {
+    debugger
     const modal = await this.modalController.create({
       component: GlobalsearchPage,
       cssClass: 'find-store-modal',
@@ -148,6 +150,7 @@ export class Tab1Page implements OnInit {
   }
 
   getService() {
+    debugger
     const loading = this.loadingCtrl.create();
     loading.then(l => l.present());
     return new Promise((resolve, reject) => {
@@ -207,6 +210,7 @@ export class Tab1Page implements OnInit {
   }
 
   onServiceClick(service) {
+    debugger
     const data: NavigationExtras = { state: { currentService: service } };
     const url = '/formen';
     this.nav.GoForward(url, data);
@@ -239,6 +243,7 @@ export class Tab1Page implements OnInit {
   }
 
   async displayStoreData() {
+    debugger
     const type = await this.storage.get('storeSelectionBy');
     if (type === 'store') {
       const store = await this.storage.get('store');

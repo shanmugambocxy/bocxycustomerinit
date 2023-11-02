@@ -21,8 +21,15 @@
         <ion-radio checked="false" slot="start" value="paylater"></ion-radio>
         <div class="text-mute font-small">
           <p>(Pay at the time of service)</p>
-        </div></ion-item
-      >
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label>Pay Now</ion-label>
+        <ion-radio checked="false" slot="start" value="paynow"></ion-radio>
+        <div class="text-mute font-small">
+          <p>(Pay using payment cards)</p>
+        </div>
+      </ion-item>
       <!-- <ion-item>
         <img
           class="ion-no-margin"
@@ -124,25 +131,13 @@
 <ion-footer class="ion-no-border">
   <ion-row class="ion-text-center button-row ion-margin-bottom">
     <ion-col size="6">
-      <ion-button
-        expand="block"
-        shape="round"
-        type="submit"
-        color="light"
-        (click)="goBack(data.merchantStoreServiceId)"
-        >Cancel</ion-button
-      >
+      <ion-button expand="block" shape="round" type="submit" color="light"
+        (click)="goBack(data.merchantStoreServiceId)">Cancel</ion-button>
     </ion-col>
 
     <ion-col size="6">
-      <ion-button
-        expand="block"
-        shape="round"
-        color="primary"
-        type="submit"
-        (click)="onContinue()"
-        >Continue</ion-button
-      >
+      <ion-button expand="block" shape="round" color="primary" type="submit"
+        (click)="onContinue()">Continue</ion-button>
     </ion-col>
   </ion-row>
 </ion-footer>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { ActionSheetController, LoadingController, AlertController } from '@ionic/angular';
+import { ActionSheetController, LoadingController, AlertController, ModalController } from '@ionic/angular';
 import { ActivatedRoute, Params, Router, ROUTER_CONFIGURATION } from '@angular/router';
 import { AllServices } from './allServices.service';
 import { ToastService } from '../_services/toast.service';
@@ -8,6 +8,7 @@ import { Storage } from '@ionic/storage';
 import { NavigationHandler } from '../_services/navigation-handler.service';
 import { NavigationExtras } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { GlobalsearchPage } from '../globalsearch/globalsearch.page';
 
 @Component({
   selector: 'app-formen',
@@ -25,6 +26,7 @@ export class FormenPage implements OnInit {
   totalPages: number;
   totalCount: number;
   allServices: any = [];
+  getAllServices: any = [];
   skipLogin: boolean;
   selectLocation: boolean;
   parentPage: string;
@@ -41,7 +43,9 @@ export class FormenPage implements OnInit {
     private nav: NavigationHandler,
     private alertCtrl: AlertController,
     public translate: TranslateService,
-    public TranslateModule: TranslateModule
+    public TranslateModule: TranslateModule,
+    public modalController: ModalController,
+
   ) { }
 
   categories;
@@ -104,6 +108,7 @@ export class FormenPage implements OnInit {
         loading.then(l => l.dismiss());
         if (response && response.status === 'SUCCESS') {
           this.allServices.push(...response.data);
+          this.getAllServices = this.allServices;
           this.totalPages = response.totalPages;
           this.totalCount = response.totalCount;
         }
@@ -262,6 +267,16 @@ export class FormenPage implements OnInit {
     }
     else {
       this.nav.GoBackTo('/home/tabs/tab1');
+    }
+  }
+
+  filterservice(ev: any) {
+    this.allServices = this.getAllServices;
+    const val = ev.target.value;
+    if (val && val.trim() !== '') {
+      this.allServices = this.allServices.filter((ser) => {
+        return (ser.serviceName.toLowerCase().indexOf(val.toLowerCase()) > -1 || ser.storeName.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      });
     }
   }
 

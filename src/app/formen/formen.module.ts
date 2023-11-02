@@ -10,6 +10,7 @@ import { FormenPageRoutingModule } from './formen-routing.module';
 import { FormenPage } from './formen.page';
 import { AllServices } from './allServices.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { GlobalSearchService } from '../globalsearch/globalsearch.service';
 
 @NgModule({
   imports: [
@@ -21,6 +22,6 @@ import { TranslateModule } from '@ngx-translate/core';
     FontAwesomeModule
   ],
   declarations: [FormenPage],
-  providers: [AllServices]
+  providers: [AllServices, GlobalSearchService]
 })
 export class FormenPageModule { }

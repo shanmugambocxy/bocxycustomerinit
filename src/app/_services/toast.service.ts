@@ -12,4 +12,14 @@ export class ToastService {
     });
     toast.present();
   }
+
+  async presentToast(data: any) {
+    const toast = await this.tstCtrl.create({
+      message: data,
+      duration: 1500,
+      position: 'bottom',
+    });
+
+    await toast.present();
+  }
 }

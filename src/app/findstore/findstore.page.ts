@@ -49,6 +49,7 @@ export class FindstorePage implements OnInit {
   }
 
   async ngOnInit() {
+    debugger
     this.locatestore = this.type;
     if (this.type === 'store') {
       this.storeName = this.storelocation;
@@ -65,6 +66,7 @@ export class FindstorePage implements OnInit {
   }
 
   getMerchantStoreList() {
+    debugger
     return new Promise((resolve, reject) => {
       this.httpService.getMerchantStoreList().pipe().subscribe(
         (response) => {
@@ -89,6 +91,7 @@ export class FindstorePage implements OnInit {
   }
 
   filterStore(ev: any) {
+    debugger
     this.stores = this.allStore;
     const val = ev.target.value;
     if (val && val.trim() !== '') {
@@ -99,6 +102,7 @@ export class FindstorePage implements OnInit {
   }
 
   async storeSelected(store: MerchantStore) {
+    debugger
     await this.modalCtrl.dismiss({
       type: 'store',
       storeId: store.merchantStoreId,
@@ -107,6 +111,7 @@ export class FindstorePage implements OnInit {
   }
 
   UpdateSearchResults() {
+    debugger
     if (this.autocomplete.input === '') {
       this.autocompleteItems = [];
       return;
@@ -130,6 +135,7 @@ export class FindstorePage implements OnInit {
 
   // wE CALL THIS FROM EACH ITEM.
   async SelectSearchResult(item) {
+    debugger
     /// WE CAN CONFIGURE MORE COMPLEX FUNCTIONS SUCH AS UPLOAD DATA TO FIRESTORE OR LINK IT TO SOMETHING
     // this.toast.showToast('item:' + JSON.stringify(item));
     const options: NativeGeocoderOptions = {
@@ -146,6 +152,7 @@ export class FindstorePage implements OnInit {
   }
 
   async getAddressFromCoords(lattitude, longitude) {
+    debugger
     const options: NativeGeocoderOptions = {
       useLocale: true,
       maxResults: 5
@@ -207,6 +214,7 @@ export class FindstorePage implements OnInit {
       });
   }
   async loadMap() {
+    debugger
     const loading = await this.loadingctrl.create({
       spinner: 'bubbles',
       message: 'Please wait...',
