@@ -130,7 +130,17 @@ const routes: Routes = [
   {
     path: 'detailannouncement/:annoucementId',
     loadChildren: () => import('./detailannouncement/detailannouncement.module').then(m => m.DetailannouncementPageModule)
-  }
+  },
+  {
+    path: 'productpage',
+    loadChildren: () => import('./all_products/productpage/productpage.module').then(m => m.ProductpagePageModule)
+  },  {
+    path: 'product-collection',
+    loadChildren: () => import('./all_products/product-collection/product-collection.module').then( m => m.ProductCollectionPageModule)
+  },
+
+
+
 
 
 

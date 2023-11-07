@@ -5,37 +5,18 @@
     </ion-buttons>
     <ion-title class="location-title" (click)="openLocationSearch()">
       <div class="location-block">
-        <ion-icon
-          name="location-outline"
-          class="icon-space"
-          color="secondary"
-        ></ion-icon>
+        <ion-icon name="location-outline" class="icon-space" color="secondary"></ion-icon>
         <ng-container *ngIf="storeName; else chooseBlock">
           {{storeName}}
         </ng-container>
         <ng-template #chooseBlock> Choose Location </ng-template>
       </div>
     </ion-title>
-    <ion-buttons
-      slot="end"
-      id="notify-btn"
-      class="notification-btn"
-      (click)="gotToNotifications()"
-    >
-      <ion-button
-        size="small"
-        fill="clear"
-        [disabled]="skipLogin"
-        color="primary"
-      >
+    <ion-buttons slot="end" id="notify-btn" class="notification-btn" (click)="gotToNotifications()">
+      <ion-button size="small" fill="clear" [disabled]="skipLogin" color="primary">
         <ion-icon name="notifications-outline"></ion-icon>
-        <ion-badge
-          color="danger"
-          id="iosbadge"
-          class="notify-badge ion-text-center"
-          slot="end"
-          *ngIf="!skipLogin && totalNotficationsCount"
-        >
+        <ion-badge color="danger" id="iosbadge" class="notify-badge ion-text-center" slot="end"
+          *ngIf="!skipLogin && totalNotficationsCount">
           {{totalNotficationsCount}}
         </ion-badge>
       </ion-button>
@@ -46,22 +27,14 @@
   <ion-toolbar>
     <ion-item lines="none" (click)="openServiceSearch()">
       <ion-input placeholder="Search for services and packages">
-        <ion-icon
-          class="search-icon"
-          name="search-outline"
-          slot="end"
-        ></ion-icon>
+        <ion-icon class="search-icon" name="search-outline" slot="end"></ion-icon>
       </ion-input>
     </ion-item>
   </ion-toolbar>
 </ion-header>
-<ion-content
-  fullscreen
-  class="card-background-page"
-  [ngClass]="
+<ion-content fullscreen class="card-background-page" [ngClass]="
 translate.currentLang ? 'font-' + translate.currentLang : ''
-"
->
+">
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
@@ -70,11 +43,7 @@ translate.currentLang ? 'font-' + translate.currentLang : ''
       <div class="heading">
         <fa-layers [fixedWidth]="true">
           <fa-icon [icon]="['fas', 'circle']"></fa-icon>
-          <fa-layers-text
-            content="%"
-            style="color: white"
-            transform="shrink-4"
-          ></fa-layers-text>
+          <fa-layers-text content="%" style="color: white" transform="shrink-4"></fa-layers-text>
         </fa-layers>
         {{'HOME_ITEMS.SPECIAL_OFFER' | translate}}
       </div>
@@ -86,9 +55,7 @@ translate.currentLang ? 'font-' + translate.currentLang : ''
           <ion-card class="offer-card">
             <img [src]="slide.image" />
             <ion-card-header class="ion-text-start">
-              <ion-card-subtitle
-                ><fa-icon icon="tag"></fa-icon> Save upto 50%</ion-card-subtitle
-              >
+              <ion-card-subtitle><fa-icon icon="tag"></fa-icon> Save upto 50%</ion-card-subtitle>
               <ion-card-title>{{slide.servicename}}</ion-card-title>
             </ion-card-header>
             <ion-card-content class="ion-text-start">
@@ -140,15 +107,10 @@ translate.currentLang ? 'font-' + translate.currentLang : ''
     </div> -->
     <div>
       <div class="service-buttons">
-        <ion-card
-          class="icon-card"
-          *ngFor="let service of serviceGroups"
-          (click)="goForward('/seemoreservice/'+service.serviceGroupId)"
-        >
+        <ion-card class="icon-card" *ngFor="let service of serviceGroups"
+          (click)="goForward('/seemoreservice/'+service.serviceGroupId)">
           <div class="container-s">
-            <img
-              [src]="'https://bocxy-merchant-new.s3.ap-south-1.amazonaws.com/'+service.icon"
-            />
+            <img [src]="'https://bocxy-merchant-new.s3.ap-south-1.amazonaws.com/'+service.icon" />
             <div class="title-s">{{service.name}}</div>
           </div>
         </ion-card>
@@ -203,4 +165,6 @@ translate.currentLang ? 'font-' + translate.currentLang : ''
       </ion-slides>
     </div> -->
   </ion-list>
+
+
 </ion-content>

@@ -42,6 +42,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 // ngx-translate
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TitleCasePipe } from '@angular/common';
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -66,7 +67,9 @@ export function createTranslateLoader(http: HttpClient) {
         useFactory: createTranslateLoader,
         deps: [HttpClient]
       }
-    })
+    }),
+
+
   ],
   providers: [
     StatusBar,
@@ -90,7 +93,8 @@ export function createTranslateLoader(http: HttpClient) {
     Facebook,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ErrorhandlerService,
-    DashboardService
+    DashboardService,
+    TitleCasePipe
   ],
   bootstrap: [AppComponent]
 })
