@@ -11,6 +11,8 @@ import { FcmService } from '../_services/fcm.service';
 import { LoginPage } from './login.page';
 import { DirectivesModule } from '../_directives/directives.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { SignupService } from '../signup/signup.service';
+import { DateService } from '../_services/date.service';
 
 @NgModule({
   imports: [
@@ -25,6 +27,6 @@ import { TranslateModule } from '@ngx-translate/core';
     DirectivesModule
   ],
   declarations: [LoginPage],
-  providers: [FcmService]
+  providers: [FcmService, SignupService, DateService]
 })
 export class LoginPageModule { }
