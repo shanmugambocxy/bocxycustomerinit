@@ -141,7 +141,11 @@ const routes: Routes = [
   {
     path: 'product-home',
     loadChildren: () => import('./all_products/product-home/product-home.module').then(m => m.ProductHomePageModule)
+  },  {
+    path: 'productfindstore',
+    loadChildren: () => import('./all_products/productfindstore/productfindstore.module').then( m => m.ProductfindstorePageModule)
   },
+
 
 
 

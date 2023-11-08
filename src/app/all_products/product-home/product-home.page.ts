@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { NavigationHandler } from 'src/app/_services/navigation-handler.service';
 import { FindstorePage } from 'src/app/findstore/findstore.page';
+import { ProductfindstorePage } from '../productfindstore/productfindstore.page';
 
 @Component({
   selector: 'app-product-home',
@@ -12,7 +14,8 @@ export class ProductHomePage implements OnInit {
   storeName: string;
 
   constructor(private nav: NavigationHandler,
-    public modalController: ModalController,) { }
+    public modalController: ModalController,
+    private router: Router) { }
 
   ngOnInit() {
   }
@@ -21,7 +24,7 @@ export class ProductHomePage implements OnInit {
     // const storeType = await this.storage.get('storeSelectionBy');
     const storeType = localStorage.getItem('productstoreSelectionBy');
     const modal = await this.modalController.create({
-      component: FindstorePage,
+      component: ProductfindstorePage,
       cssClass: 'my-custom-class',
       componentProps: {
         storelocation: this.storeName,
@@ -36,7 +39,7 @@ export class ProductHomePage implements OnInit {
         if (response.data.type === 'store') {
           // this.storage.set('productstore', response.data);
           localStorage.setItem('productstore', JSON.stringify(response.data))
-
+          this.router.navigate(['/productpage']);
         }
         else {
           // this.storage.set('productlocationCrypt', response.data);

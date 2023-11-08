@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NavigationHandler } from 'src/app/_services/navigation-handler.service';
 import * as $ from 'jquery';
 import { ProductService } from '../product_service/product.service';
+import { UtilService } from '../product_service/util.service';
 
 @Component({
   selector: 'app-product-collection',
@@ -51,7 +52,8 @@ export class ProductCollectionPage implements OnInit {
     private router: Router,
     private activeRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private productService: ProductService) { }
+    private productService: ProductService,
+    private util: UtilService,) { }
   @HostListener('window:scroll', ['$event'])
   handleScroll() {
     const windowScroll = window.pageYOffset;
@@ -75,7 +77,7 @@ export class ProductCollectionPage implements OnInit {
       this.pageType = res.type
     })
     // this.spinner.show()
-    // this.filterForm = this.util.getForm('productFilter')
+    this.filterForm = this.util.getForm('productFilter')
     this.sortByFilter = 'FEATURED'
     this.productService.getCall('Product/getProduct').subscribe(async data => {
       console.log(data)
@@ -105,13 +107,14 @@ export class ProductCollectionPage implements OnInit {
 
 
   getFilterDropDownData() {
-    // this.categoryDropdownList = this.util.getStatic('categoryDropdown');
-    // this.stoneDropdownList = this.util.getStatic('stoneDropdown');
-    // this.colourDropdownList = this.util.getStatic('colourDropdown');
-    // this.styleDropdownList = this.util.getStatic('styleDropdown');
-    // this.forDropdownList = this.util.getStatic('forDropdown');
-    // this.sortByDropdownList = this.util.getStatic('sortByDropdown');
-    //count category items
+    debugger
+    this.categoryDropdownList = this.util.getStatic('categoryDropdown');
+    this.stoneDropdownList = this.util.getStatic('stoneDropdown');
+    this.colourDropdownList = this.util.getStatic('colourDropdown');
+    this.styleDropdownList = this.util.getStatic('styleDropdown');
+    this.forDropdownList = this.util.getStatic('forDropdown');
+    this.sortByDropdownList = this.util.getStatic('sortByDropdown');
+    // count category items
     this.categoryDropdownList.map((e: any) => {
       e.count = 0
       this.productList.map((x: any) => {

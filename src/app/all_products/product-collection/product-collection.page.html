@@ -28,8 +28,9 @@
                 </mat-select> -->
               <ng-container *ngFor="let row of categoryDropdownList; let i= index">
                 <div class="mb-1" *ngIf="row.count!=0">
-                  <input type="checkbox" [(ngModel)]="selectedCategory" id="category{{i}}"
-                    (change)="getFilterData($event,row,'category')" class="" autocomplete="off" [checked]="row.checked">
+                  <input type="checkbox" [(ngModel)]="selectedCategory" [ngModelOptions]="{standalone: true}"
+                    id="category{{i}}" (change)="getFilterData($event,row,'category')" class="" autocomplete="off"
+                    [checked]="row.checked">
                   <label class="ml-3" for="category{{i}}">{{row?.field_name}}</label>
                 </div>
               </ng-container>
@@ -42,7 +43,8 @@
               <ng-container *ngFor="let row of stoneDropdownList; let i= index">
                 <div class="mb-1" *ngIf="row.count!=0">
                   <input type="checkbox" [(ngModel)]="selectedStone" id="stone{{i}}"
-                    (change)="getFilterData($event,row,'stone')" class="" autocomplete="off" [checked]="row.checked">
+                    [ngModelOptions]="{standalone: true}" (change)="getFilterData($event,row,'stone')" class=""
+                    autocomplete="off" [checked]="row.checked">
                   <label class="ml-3" for="stone{{i}}">{{row?.field_name}}</label>
                 </div>
               </ng-container>
@@ -54,9 +56,9 @@
             <div class="dropdown-content" [class.sticky-dropdown]="sticky">
               <div class="flex-custom mb-3">
                 <input type="text" formControlName="minPrice" [(ngModel)]="minValue" class="priceRange"
-                  autocomplete="off" (keyUp)="changePrice($event,'min')"> -
+                  autocomplete="off" (keyUp)="changePrice($event,'min')" [ngModelOptions]="{standalone: true}"> -
                 <input type="text" formControlName="maxPrice" [(ngModel)]="maxValue" class="priceRange"
-                  autocomplete="off" (keyUp)="changePrice($event,'max')">
+                  autocomplete="off" (keyUp)="changePrice($event,'max')" [ngModelOptions]="{standalone: true}">
               </div>
               <!-- <ngx-slider [options]="slideOptions" (userChange)="filterByPrice($event,'price')" [(value)]="minValue" [(highValue)]="maxValue"></ngx-slider> -->
             </div>
@@ -68,7 +70,8 @@
               <ng-container *ngFor="let row of colourDropdownList; let i= index">
                 <div class="mb-1" *ngIf="row.count!=0">
                   <input type="checkbox" [(ngModel)]="selectedColour" id="colour{{i}}"
-                    (change)="getFilterData($event,row,'colour')" class="" autocomplete="off" [checked]="row.checked">
+                    (change)="getFilterData($event,row,'colour')" class="" autocomplete="off" [checked]="row.checked"
+                    [ngModelOptions]="{standalone: true}">
                   <label class="ml-3" for="colour{{i}}">{{row?.field_name}}</label>
                 </div>
               </ng-container>
@@ -82,7 +85,8 @@
               <ng-container *ngFor="let row of styleDropdownList; let i= index">
                 <div class="mb-1" *ngIf="row.count!=0">
                   <input type="checkbox" [(ngModel)]="selectedStyle" [value]="row" id="style{{i}}"
-                    (change)="getFilterData($event,row,'style')" class="" autocomplete="off" [checked]="row.checked">
+                    (change)="getFilterData($event,row,'style')" class="" autocomplete="off" [checked]="row.checked"
+                    [ngModelOptions]="{standalone: true}">
                   <label class="ml-3" for="style{{i}}">{{row?.field_name}}</label>
                 </div>
               </ng-container>
@@ -94,7 +98,8 @@
               <ng-container *ngFor="let row of forDropdownList; let i= index">
                 <div class="mb-1">
                   <input type="checkbox" [(ngModel)]="selectedFor" id="for{{i}}"
-                    (change)="getFilterData($event,row,'for')" class="" autocomplete="off" [checked]="row.checked">
+                    (change)="getFilterData($event,row,'for')" class="" autocomplete="off" [checked]="row.checked"
+                    [ngModelOptions]="{standalone: true}">
                   <label class="ml-3" for="for{{i}}">{{row?.field_name}}</label>
                 </div>
               </ng-container>
