@@ -2,6 +2,8 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavigationHandler } from 'src/app/_services/navigation-handler.service';
+import * as $ from 'jquery';
+import { ProductService } from '../product_service/product.service';
 
 @Component({
   selector: 'app-product-collection',
@@ -48,7 +50,8 @@ export class ProductCollectionPage implements OnInit {
   constructor(private nav: NavigationHandler,
     private router: Router,
     private activeRoute: ActivatedRoute,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private productService: ProductService) { }
   @HostListener('window:scroll', ['$event'])
   handleScroll() {
     const windowScroll = window.pageYOffset;
@@ -74,30 +77,30 @@ export class ProductCollectionPage implements OnInit {
     // this.spinner.show()
     // this.filterForm = this.util.getForm('productFilter')
     this.sortByFilter = 'FEATURED'
-    // this.api.getCall('Product/getProduct').subscribe(async data => {
-    //   console.log(data)
-    //   this.productList = data
-    //   this.productList = this.productList.data
-    //   // hard code image
-    //   // this.productList['productImages']=[data.productImage,data.productImage,data.productImage,data.productImage,data.productImage]
-    //   this.allProductList = this.productList
-    //   if (this.pageType == 'gift') {
-    //     this.productList = this.productList.filter(e => e.gift)
-    //     console.log('gift product', this.productList)
-    //   } else if (this.pageType == 'personalised') {
-    //     this.productList = this.productList.filter(e => e.personalised)
-    //     console.log('Personalised product', this.productList)
-    //   } else if (this.pageType == 'arrivals') {
-    //     this.productList = this.productList.filter(e => e.latest)
-    //     console.log('New arrived product', this.productList)
-    //   }
-    //   setTimeout(() => {
-    //     this.spinner.hide();
-    //   }, 2000);
+    this.productService.getCall('Product/getProduct').subscribe(async data => {
+      console.log(data)
+      this.productList = data
+      this.productList = this.productList.data
+      // hard code image
+      // this.productList['productImages']=[data.productImage,data.productImage,data.productImage,data.productImage,data.productImage]
+      this.allProductList = this.productList
+      if (this.pageType == 'gift') {
+        this.productList = this.productList.filter(e => e.gift)
+        console.log('gift product', this.productList)
+      } else if (this.pageType == 'personalised') {
+        this.productList = this.productList.filter(e => e.personalised)
+        console.log('Personalised product', this.productList)
+      } else if (this.pageType == 'arrivals') {
+        this.productList = this.productList.filter(e => e.latest)
+        console.log('New arrived product', this.productList)
+      }
+      setTimeout(() => {
+        // this.spinner.hide();
+      }, 2000);
 
-    //   await this.getFilterDropDownData()
-    //   // this.spinner.hide();
-    // })
+      await this.getFilterDropDownData()
+      // this.spinner.hide();
+    })
   }
 
 
@@ -385,14 +388,16 @@ export class ProductCollectionPage implements OnInit {
   }
 
   subMenuOpen(id) {
+    console.log('id', id);
+
     let idList = [{ id: 'category' }, { id: 'stone' }, { id: 'price' }, { id: 'colour' }, { id: 'style' }, { id: 'for' }, { id: 'sortBy' }]
-    // $('#' + id).toggleClass('open').siblings().slideToggle(300);
+    $('#' + id).toggleClass('open').siblings().slideToggle(300);
     if (this.prevId != id) {
-      // $('#' + this.prevId).toggleClass('open').siblings().slideUp(300)
+      $('#' + this.prevId).toggleClass('open').siblings().slideUp(300)
     }
     if (this.prevId == id) {
-      // $('#' + id).toggleClass('open')
-      // $('#' + this.prevId).toggleClass('open')
+      $('#' + id).toggleClass('open')
+      $('#' + this.prevId).toggleClass('open')
     }
     this.prevId = id
   }

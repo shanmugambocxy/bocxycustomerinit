@@ -89,6 +89,9 @@ export class AppComponent implements OnInit {
       },
       {
         title: 'SIDE_MENU_ITEMS.PRODUCTS',
+
+        // url: '/product-home',
+
         url: '/productpage',
         direct: 'root',
         icon: 'pricetags-outline',

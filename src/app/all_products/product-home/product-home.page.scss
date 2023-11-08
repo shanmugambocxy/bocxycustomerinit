@@ -1,0 +1,15 @@
+.location-title {
+    font-size: 1em;
+    background: #fff;
+    font-weight: bold;
+    padding: 5px;
+    line-height: 2;
+
+    .caret {
+        vertical-align: middle;
+    }
+
+    ion-icon {
+        color: #e82264;
+    }
+}

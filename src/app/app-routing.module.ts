@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
 const routes: Routes = [
   {
     path: '',
@@ -134,10 +133,16 @@ const routes: Routes = [
   {
     path: 'productpage',
     loadChildren: () => import('./all_products/productpage/productpage.module').then(m => m.ProductpagePageModule)
-  },  {
-    path: 'product-collection',
-    loadChildren: () => import('./all_products/product-collection/product-collection.module').then( m => m.ProductCollectionPageModule)
   },
+  {
+    path: 'product-collection',
+    loadChildren: () => import('./all_products/product-collection/product-collection.module').then(m => m.ProductCollectionPageModule)
+  },
+  {
+    path: 'product-home',
+    loadChildren: () => import('./all_products/product-home/product-home.module').then(m => m.ProductHomePageModule)
+  },
+
 
 
 

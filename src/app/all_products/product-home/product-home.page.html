@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack('home/tabs/tab1')">
+        <ion-icon class="back-btn-size" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <!-- <ion-title>Products</ion-title> -->
+    <ion-title class="location-title" (click)="openLocationSearch()">
+      <div class="location-block">
+        <ion-icon name="location-outline" class="icon-space" color="secondary"></ion-icon>
+        <ng-container *ngIf="storeName; else chooseBlock">
+          {{storeName}}
+        </ng-container>
+        <ng-template #chooseBlock> Choose Location </ng-template>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+</ion-content>
