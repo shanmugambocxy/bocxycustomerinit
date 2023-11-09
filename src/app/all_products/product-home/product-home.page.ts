@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { IonSlides, ModalController } from '@ionic/angular';
 import { NavigationHandler } from 'src/app/_services/navigation-handler.service';
 import { FindstorePage } from 'src/app/findstore/findstore.page';
 import { ProductfindstorePage } from '../productfindstore/productfindstore.page';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-home',
@@ -12,10 +13,30 @@ import { ProductfindstorePage } from '../productfindstore/productfindstore.page'
 })
 export class ProductHomePage implements OnInit {
   storeName: string;
-
+  @ViewChild('homeSlider') slides: IonSlides;
+  @ViewChild('brandSlider') brandslides: IonSlides;
+  slideOpts = {
+    initialSlide: 0,
+    speed: 400,
+    slidesPerView: 1,
+    autoplay: false
+  };
+  brandslideOpts = {
+    initialSlide: 0,
+    slidesPerView: 2,
+    autoplay: false
+  };
+  skipLogin: boolean;
+  lang: any;
+  totalNotficationsCount: number;
+  homeslides = [
+    { servicename: 'Youthful Haircut', description: 'Haircuts are not merely new hairstyles, but a new you!', image: './assets/img/offer2.jpg' },
+    { servicename: 'Bridal Makeup', description: 'Your fairy tale wedding is now a reality!', image: './assets/img/offer1.jpg' },
+    { servicename: 'Soothing Facial (Women)', description: 'Nourish your skin and calm your mind with a soothing facial', image: './assets/img/offer3.jpg' }
+  ];
   constructor(private nav: NavigationHandler,
     public modalController: ModalController,
-    private router: Router) { }
+    private router: Router, public translate: TranslateService) { }
 
   ngOnInit() {
   }

@@ -79,7 +79,8 @@ export class ProductCollectionPage implements OnInit {
     // this.spinner.show()
     this.filterForm = this.util.getForm('productFilter')
     this.sortByFilter = 'FEATURED'
-    this.productService.getCall('Product/getProduct').subscribe(async data => {
+    // this.productService.getCall('Product/getProduct').subscribe(async data => {
+    this.productService.getCall('Product/getProduct/6514126679808947657f762e').subscribe(async data => {
       console.log(data)
       this.productList = data
       this.productList = this.productList.data
@@ -410,8 +411,13 @@ export class ProductCollectionPage implements OnInit {
   }
 
   routeToDetails(data?: any) {
+    console.log('data', data);
+
     let productName = data.productName.replace(/\s/g, '-')
-    let url = `/jewel/product-collections/details/${productName}`
+    // let url = `/jewel/product-collections/details/${productName}`
+    let url = `/product-details/${productName}`
+
+
     return this.router.navigate([url], { state: { data } })
 
     // return this.router.navigate([url],{queryParams:{productDetails:{...data}},  skipLocationChange: true})

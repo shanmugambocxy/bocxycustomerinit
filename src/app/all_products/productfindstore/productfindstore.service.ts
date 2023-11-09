@@ -29,4 +29,10 @@ export class ProductfindstoreService {
       catchError(this.eh.handleHttpError<{ data: MerchantStore[], status: string }>('Failed to fetch merchant store list'))
     );
   }
+  getAllMainStoreList(): Observable<{ data: MerchantStore[], status: string }> {
+    return this.http.get<{ data: MerchantStore[], status: string }>(`${environment.productApiUrl}admin/getAllMainStore`).pipe(
+      tap(_ => console.log('Merchant store list fetch')),
+      catchError(this.eh.handleHttpError<{ data: MerchantStore[], status: string }>('Failed to fetch merchant store list'))
+    );
+  }
 }

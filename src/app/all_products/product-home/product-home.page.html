@@ -1,12 +1,10 @@
 <ion-header>
   <ion-toolbar color="light">
     <ion-buttons slot="start">
-      <ion-button (click)="goBack('home/tabs/tab1')">
-        <ion-icon class="back-btn-size" name="arrow-back"></ion-icon>
-      </ion-button>
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <!-- <ion-title>Products</ion-title> -->
-    <ion-title class="location-title" (click)="openLocationSearch()">
+
+    <ion-title class="location-title" (click)="openLocationSearch()" style="margin-right: 10px;">
       <div class="location-block">
         <ion-icon name="location-outline" class="icon-space" color="secondary"></ion-icon>
         <ng-container *ngIf="storeName; else chooseBlock">
@@ -19,5 +17,55 @@
 </ion-header>
 
 <ion-content>
+  <div class="special-offers">
+    <ion-item lines="none" class="item-height" (click)="openLocationSearch()">
+      <div class="heading">
+        <fa-layers [fixedWidth]="true">
+          <fa-icon [icon]="['fas', 'circle']"></fa-icon>
+          <fa-layers-text content="%" style="color: white" transform="shrink-4"></fa-layers-text>
+        </fa-layers>
+        {{'HOME_ITEMS.SPECIAL_OFFER' | translate}}
+      </div>
+    </ion-item>
 
+    <ion-item lines="none" class="offer-slide" (click)="openLocationSearch()">
+      <div class="scrolling-wrapper">
+        <div class="card" *ngFor="let slide of homeslides">
+          <ion-card class="offer-card">
+            <img [src]="slide.image" />
+            <ion-card-header class="ion-text-start">
+              <ion-card-subtitle><fa-icon icon="tag"></fa-icon> Save upto 50%</ion-card-subtitle>
+              <ion-card-title>{{slide.servicename}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content class="ion-text-start">
+              {{slide.description}}
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </div>
+
+
+    </ion-item>
+  </div>
+  <ion-list class="ion-no-padding">
+    <ion-item lines="none" class="item-height">
+      <div class="heading">{{'HOME_ITEMS.SERVICES' | translate}}</div>
+
+    </ion-item>
+
+
+    <div>
+      <div class="service-buttons">
+        <ion-card class="icon-card" *ngFor="let service of serviceGroups"
+          (click)="goForward('/seemoreservice/'+service.serviceGroupId)">
+          <div class="container-s">
+            <img [src]="'https://bocxy-merchant-new.s3.ap-south-1.amazonaws.com/'+service.icon" />
+            <div class="title-s">{{service.name}}</div>
+          </div>
+        </ion-card>
+      </div>
+    </div>
+
+
+  </ion-list>
 </ion-content>

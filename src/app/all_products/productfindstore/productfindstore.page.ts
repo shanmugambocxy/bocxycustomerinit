@@ -21,8 +21,8 @@ export class ProductfindstorePage implements OnInit {
   locatestore = 'store';
 
   isServcieAvailable = false;
-  allStore: MerchantStore[];
-  stores: MerchantStore[];
+  allStore: any = [];
+  stores: any = [];
   storeName: string;
   map: any;
   @ViewChild('map', { static: false }) mapElement: ElementRef;
@@ -53,7 +53,9 @@ export class ProductfindstorePage implements OnInit {
     else {
       this.autocomplete.input = this.storelocation;
     }
-    await this.getMerchantStoreList();
+    // await this.getMerchantStoreList();
+    await this.getMainStoreList();
+
   }
 
   dismiss() {
@@ -64,8 +66,10 @@ export class ProductfindstorePage implements OnInit {
 
   getMerchantStoreList() {
     return new Promise((resolve, reject) => {
-      this.httpService.getMerchantStoreList().pipe().subscribe(
+      this.httpService.getAllMainStoreList().pipe().subscribe(
         (response) => {
+          console.log('response', response);
+
           if (response && response.status === 'SUCCESS') {
             for (const store of response.data) {
               const location = store.locality ? `, ${store.locality}` : '';
@@ -85,13 +89,40 @@ export class ProductfindstorePage implements OnInit {
       );
     });
   }
+  getMainStoreList() {
+    debugger
+    return new Promise((resolve, reject) => {
+      this.httpService.getAllMainStoreList().pipe().subscribe(
+        (response) => {
+          console.log('response', response);
 
+          if (response && response.status) {
+            // for (const store of response.data) {
+            //   const location = store.locality ? `, ${store.locality}` : '';
+            //   store.display = `${store.name}${location}`;
+            // }
+            this.allStore = response.data;
+          }
+          else {
+            this.toast.showToast('Something went wrong. Please try again');
+          }
+          resolve(1);
+        },
+        (error) => {
+          this.toast.showToast('Something went wrong. Please try again');
+          reject(1);
+        }
+      );
+    });
+  }
   filterStore(ev: any) {
+    console.log('filter');
+
     this.stores = this.allStore;
     const val = ev.target.value;
     if (val && val.trim() !== '') {
       this.stores = this.stores.filter((ser) => {
-        return (ser.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return (ser.store_name.toLowerCase().indexOf(val.toLowerCase()) > -1);
       });
     }
   }
@@ -105,6 +136,8 @@ export class ProductfindstorePage implements OnInit {
   }
 
   UpdateSearchResults() {
+    console.log('update');
+
     if (this.autocomplete.input === '') {
       this.autocompleteItems = [];
       return;

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController } from '@ionic/angular';
-import { Storage } from '@ionic/storage';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-producttab',
@@ -19,6 +18,8 @@ export class ProducttabPage implements OnInit {
   }
 
   ngOnInit() {
+    console.log('tabs');
+
   }
 
 }

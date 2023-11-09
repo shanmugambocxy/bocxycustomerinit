@@ -61,7 +61,8 @@ translate.currentLang ? 'font-' + translate.currentLang : ''
     </ion-list>
     <ion-list *ngIf="locatestore === 'store'">
       <ion-item *ngFor="let store of stores" (click)="storeSelected(store)">
-        {{store.display}}
+        <!-- {{store.display}} -->
+        {{store.store_name}}
       </ion-item>
     </ion-list>
   </div>

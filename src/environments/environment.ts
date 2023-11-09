@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   apiUrl: 'https://api.bocxy.com/',
-  productApiUrl: 'https://api.aurajewelmart.com/'
+  angularproductApiUrl: 'https://api.aurajewelmart.com/',
+  productApiUrl: 'https://ecommapi.bocxy.com/'
   // apiUrl: 'https://devapi.bocxy.com/',
   // apiUrl: 'http://192.168.118.2:50080/',
   // apiUrl: 'http://localhost:50080/',

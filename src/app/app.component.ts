@@ -90,10 +90,11 @@ export class AppComponent implements OnInit {
       {
         title: 'SIDE_MENU_ITEMS.PRODUCTS',
 
-        url: '/product-home',
-
+        // url: '/product-home',
+        // url: '/producthome',
         // url: '/productpage',
-        direct: 'root',
+        url: '/producttabs/tabs/producttab1',
+        direct: 'forward',
         icon: 'pricetags-outline',
         hide: false
       },

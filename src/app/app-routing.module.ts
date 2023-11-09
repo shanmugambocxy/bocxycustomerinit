@@ -14,6 +14,10 @@ const routes: Routes = [
     path: 'home',
     loadChildren: './tabs/tabs.module#TabsPageModule'
   },
+  // {
+  //   path: 'producthome',
+  //   loadChildren: './all_products/producttab/producttab.module'
+  // },
   {
     path: 'intro',
     loadChildren: () => import('./intro/intro.module').then(m => m.IntroPageModule)
@@ -138,21 +142,27 @@ const routes: Routes = [
     path: 'product-collection',
     loadChildren: () => import('./all_products/product-collection/product-collection.module').then(m => m.ProductCollectionPageModule)
   },
+  // {
+  //   path: 'product-home',
+  //   loadChildren: () => import('./all_products/product-home/product-home.module').then(m => m.ProductHomePageModule)
+  // },
   {
-    path: 'product-home',
-    loadChildren: () => import('./all_products/product-home/product-home.module').then(m => m.ProductHomePageModule)
-  },  {
     path: 'productfindstore',
-    loadChildren: () => import('./all_products/productfindstore/productfindstore.module').then( m => m.ProductfindstorePageModule)
+    loadChildren: () => import('./all_products/productfindstore/productfindstore.module').then(m => m.ProductfindstorePageModule)
   },
   {
-    path: 'producttab',
-    loadChildren: () => import('./all_products/producttab/producttab.module').then( m => m.ProducttabPageModule)
+    path: 'product-details/:data',
+    loadChildren: () => import('./all_products/product-details/product-details.module').then(m => m.ProductDetailsPageModule)
   },
 
-
-
-
+  {
+    path: 'producttabs',
+    loadChildren: () => import('./all_products/producttab/producttab.module').then(m => m.ProducttabPageModule)
+  },
+  // {
+  //   path: 'producthome',
+  //   loadChildren: './all_products/producttab.module#ProducttabPageModule'
+  // },
 
 
 

@@ -1,21 +1,22 @@
-<ion-tabs [ngClass]="
-translate.currentLang ? 'font-' + translate.currentLang : ''
-">
+<ion-tabs>
   <ion-tab-bar color="light" slot="bottom">
-    <ion-tab-button tab="tab1" class="tab-home">
+    <ion-tab-button tab="producttab1" class="tab-home">
+      <ion-icon name="pricetags-outline"></ion-icon>
+      <!-- <ion-icon name="home-outline"></ion-icon> -->
+      <ion-label>products</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="producttab2" class="tab-home">
       <ion-icon name="home-outline"></ion-icon>
-      <ion-label>{{'TAB_MENU_ITEMS.HOME' | translate}}</ion-label>
+      <ion-label>products2</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="producttab3" class="tab-home">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>products3</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button (click)="openServiceSearch()" class="tab-explore">
-      <ion-icon name="search-outline"></ion-icon>
-      <ion-label>{{'TAB_MENU_ITEMS.EXPLORE' | translate}}</ion-label>
-    </ion-tab-button>
-    <ion-tab-button tab="tab0" disabled="true"> </ion-tab-button>
-
+    <!-- 
     <ng-container *ngIf="skipLogin;else enableTab3">
       <ion-tab-button (click)="gotoLogin($event)" class="tab-mybookings">
-        <!-- <ion-tab-button [disabled]="true" tab="tab3"> -->
         <ion-icon name="calendar-outline"></ion-icon>
         <ion-label>{{'TAB_MENU_ITEMS.BOOKINGS' | translate}}</ion-label>
       </ion-tab-button>
@@ -26,7 +27,6 @@ translate.currentLang ? 'font-' + translate.currentLang : ''
     </ng-container>
     <ng-template #enableTab3>
       <ion-tab-button tab="tab3">
-        <!-- <ion-tab-button [disabled]="true" tab="tab3"> -->
         <ion-icon name="calendar-outline"></ion-icon>
         <ion-label>{{'TAB_MENU_ITEMS.BOOKINGS' | translate}}</ion-label>
       </ion-tab-button>
@@ -34,11 +34,27 @@ translate.currentLang ? 'font-' + translate.currentLang : ''
         <ion-icon name="person-outline"></ion-icon>
         <ion-label>{{'TAB_MENU_ITEMS.PROFILE' | translate}}</ion-label>
       </ion-tab-button>
-    </ng-template>
+    </ng-template> -->
   </ion-tab-bar>
-  <ion-fab vertical="bottom" horizontal="center" mode="ios" slot="fixed" class="home-fab">
-    <ion-fab-button color="light">
-      <img src="./assets/icon/bocxy_icon.svg" />
-    </ion-fab-button>
-  </ion-fab>
+
 </ion-tabs>
+
+<!-- 
+<ion-tabs>
+  <ion-tab-bar mode="ios" slot="bottom">
+    <ion-tab-button tab="producttab1" layout="icon-top">
+      <ion-icon name="flash"></ion-icon>
+      <ion-label>Products</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="tab2" layout="icon-top">
+      <ion-icon name="apps"></ion-icon>
+      <ion-label>List</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="tab3" layout="icon-top">
+      <ion-icon name="send"></ion-icon>
+      <ion-label>Profile</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs> -->

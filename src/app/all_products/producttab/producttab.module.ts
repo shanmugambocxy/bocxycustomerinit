@@ -14,8 +14,9 @@ import { TranslateModule } from '@ngx-translate/core';
     CommonModule,
     FormsModule,
     IonicModule,
+    TranslateModule,
+
     ProducttabPageRoutingModule,
-    TranslateModule
   ],
   declarations: [ProducttabPage]
 })
