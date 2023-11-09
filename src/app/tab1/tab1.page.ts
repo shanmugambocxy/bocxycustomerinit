@@ -51,6 +51,24 @@ export class Tab1Page implements OnInit {
   genderServiceList = [];
   storeName: string;
   serviceGroups: any[];
+
+
+  productList: any = [{
+    id: 1,
+    src: 'https://ecommapi.bocxy.com//files/admin-files-1696566743496.jpeg',
+    productname: 'product1',
+    strikeAmount: 3499,
+    discount: 10,
+    finalPrice: 2999
+  },
+  {
+    id: 2,
+    src: 'https://ecommapi.bocxy.com//files/admin-files-1696566883419.jpeg',
+    productname: 'product2',
+    strikeAmount: 3499,
+    discount: 10,
+    finalPrice: 2999
+  }]
   constructor(
     private navCtrl: NavController,
     private dashboardService: DashboardService,

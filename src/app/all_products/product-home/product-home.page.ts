@@ -15,6 +15,7 @@ export class ProductHomePage implements OnInit {
   storeName: string;
   @ViewChild('homeSlider') slides: IonSlides;
   @ViewChild('brandSlider') brandslides: IonSlides;
+  serviceGroups: any = [];
   slideOpts = {
     initialSlide: 0,
     speed: 400,
@@ -74,5 +75,7 @@ export class ProductHomePage implements OnInit {
   goBack(url: string) {
     this.nav.GoBackTo(url);
   }
+  goForward(item: any) {
 
+  }
 }

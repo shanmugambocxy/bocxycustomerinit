@@ -165,6 +165,42 @@ translate.currentLang ? 'font-' + translate.currentLang : ''
       </ion-slides>
     </div> -->
   </ion-list>
+  <!-- <ion-list>
+    <ion-row>
+      <ion-col size="6" *ngFor="let product of productList">
+        <ion-card>
+          <ion-row>
+            <ion-col>
+              <img [src]="product.src">
+              <ion-label>{{product.productname}}</ion-label><br>
+              <ion-label>Rs.{{product.strikeAmount}} <span>{{product.discount}}%OFF</span></ion-label><br>
+              <ion-label>Rs.{{product.finalPrice}}</ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-item>
 
+              <button style="    border-radius: 50px;
+            width: 30px;
+            height: 30px;"><ion-icon name="heart-outline" style="vertical-align: middle;"></ion-icon>
+              </button>
 
+              <ion-button>Add To
+                Cart</ion-button>
+            </ion-item>
+
+          </ion-row>
+
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-list> -->
+  <!-- <ion-row>
+    <ion-col size="6">
+      <ion-button expand="block">Filter <ion-icon name="filter-outline"></ion-icon></ion-button>
+    </ion-col>
+    <ion-col size="6"><ion-button expand="block">Sort By <ion-icon
+          name="chevron-down-outline"></ion-icon></ion-button></ion-col>
+
+  </ion-row> -->
 </ion-content>

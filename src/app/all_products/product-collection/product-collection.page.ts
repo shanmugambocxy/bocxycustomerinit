@@ -21,9 +21,42 @@ export class ProductCollectionPage implements OnInit {
   forDropdownList: any;
   sortByDropdownList: any;
   // dropdownSettings:IDropdownSettings={};
-
+  selectedCatogoryArray: any = [];
+  categoryArray: any = [];
   minValue: number = 0;
   maxValue: number = 10000;
+  newProductList: any = [{
+    id: 1,
+    src: 'https://ecommapi.bocxy.com//files/admin-files-1696566743496.jpeg',
+    productname: 'product1',
+    strikeAmount: 3499,
+    discount: 10,
+    finalPrice: 2999
+  },
+  {
+    id: 2,
+    src: 'https://ecommapi.bocxy.com//files/admin-files-1696566883419.jpeg',
+    productname: 'product2',
+    strikeAmount: 3499,
+    discount: 10,
+    finalPrice: 2999
+  },
+  {
+    id: 1,
+    src: 'https://ecommapi.bocxy.com//files/admin-files-1696566743496.jpeg',
+    productname: 'product1',
+    strikeAmount: 3499,
+    discount: 10,
+    finalPrice: 2999
+  },
+  {
+    id: 2,
+    src: 'https://ecommapi.bocxy.com//files/admin-files-1696566883419.jpeg',
+    productname: 'product2',
+    strikeAmount: 3499,
+    discount: 10,
+    finalPrice: 2999
+  }]
   // slideOptions: Options = {
   //   floor: 0,
   //   ceil: 10000,
@@ -413,12 +446,14 @@ export class ProductCollectionPage implements OnInit {
   routeToDetails(data?: any) {
     console.log('data', data);
 
-    let productName = data.productName.replace(/\s/g, '-')
+    // let productName = data.productName.replace(/\s/g, '-')
     // let url = `/jewel/product-collections/details/${productName}`
-    let url = `/product-details/${productName}`
+    let url = `/product-details`
 
 
-    return this.router.navigate([url], { state: { data } })
+    // return this.router.navigate([url], { state: { data } })
+    return this.router.navigate([url])
+
 
     // return this.router.navigate([url],{queryParams:{productDetails:{...data}},  skipLocationChange: true})
   }

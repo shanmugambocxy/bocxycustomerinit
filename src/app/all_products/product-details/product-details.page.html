@@ -8,13 +8,19 @@
   <div class="product-details">
     <div class="flex-custom">
       <div class="pdct-img">
-        <img class="accordion_img mb-3" [src]="currentImage" alt="">
-        <div class="flex-custom">
+        <img class="accordion_img mb-3" [src]="currentImageNew" alt="">
+        <div class="flex-custom" style="display: flex;text-align-last: center;">
           <!-- <div  *ngIf="productImgList.length"> -->
-          <div *ngFor="let pic of productImgList">
+          <!-- <div *ngFor="let pic of productImgList">
             <img class="w-50 cursor-pointer" [src]="pic.imgUrl" alt="" [class.border]="pic.active"
               (click)="activeImage(pic)">
+          </div> -->
+
+          <div *ngFor="let pic of imagelist">
+            <img class="w-50 cursor-pointer" [src]="pic.src" alt="" [class.border]="pic.active"
+              (click)="selectImage(pic)">
           </div>
+          <!-- <img [src]=" 'https://ecommapi.bocxy.com//files/admin-files-1696510268119.jpeg' "> -->
 
           <!-- </div> -->
           <!-- <video controls class="">
@@ -29,8 +35,8 @@
       <div class="product_content">
         <div class="flex-custom">
           <label class="header mb-2">{{currentProductDetails?.productName | titlecase}}</label>
-          <mat-icon class="ml-auto cursor-pointer" [cdkCopyToClipboard]="copyUrl()"
-            matTooltip="Copy the link">share</mat-icon>
+          <!-- <mat-icon class="ml-auto cursor-pointer" [cdkCopyToClipboard]="copyUrl()"
+            matTooltip="Copy the link">share</mat-icon> -->
         </div>
         <div class="mb-2">{{currentProductDetails?.productName | titlecase}}</div>
 
@@ -42,7 +48,7 @@
             <label>Incl. of all taxes</label>
           </div>
         </div>
-        <div class="flex-grid">
+        <div class="flex-grid" style="text-align: center;">
           <div class="flex-custom">
             <input type="checkbox" id="giftWrap" class="mr-3 mb-1" autocomplete="off">
             <label for="giftWrap">Add Gift Wrap to your Order (Rs. 50)</label>
@@ -51,11 +57,12 @@
           <button class="btn btn-cart mb-12" (click)="addToCart()">ADD TO CART</button>
           <button class="btn btn-secondary btn-buy mb-12" style="background-color: #7f3395;" (click)="BuyItNow()">BUY IT
             NOW</button>
-          <button class="btn border mb-12" (click)="addWishlist()"><img class="d-arrow mr-12"
+          <ion-button>Add To WishList <ion-icon name="heart-outline"></ion-icon></ion-button>
+          <!-- <button class="btn border mb-12" (click)="addWishlist()"><img class="d-arrow mr-12"
               src="../../../assets/homeImg/heart.png" alt="">{{addToWishlist ? 'ADDED TO WISHLIST'
-            :'ADDTOWISHLIST'}}</button>
+            :'ADDTOWISHLIST'}}</button> -->
         </div>
-        <div class="flex-custom mb-3">
+        <div class="flex-custom mb-3" style="display: flex;">
           <!-- static policy content -->
           <ng-container *ngFor="let policy of productPolicies">
             <ul class="tags">

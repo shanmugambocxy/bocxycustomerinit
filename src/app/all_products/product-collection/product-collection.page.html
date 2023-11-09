@@ -5,17 +5,78 @@
         <ion-icon class="back-btn-size" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Products</ion-title>
+    <ion-title>All Products</ion-title>
   </ion-toolbar>
 </ion-header>
 
+
+
+
+
+
+
 <ion-content>
+  <ion-list>
+    <ion-row>
+      <ion-col *ngFor="let product of newProductList">
+        <ion-card (click)="routeToDetails($event)">
+          <ion-row>
+            <ion-col>
+              <img [src]="product.src">
+              <ion-label>{{product.productname}}</ion-label><br>
+              <ion-label> <span style="text-decoration: line-through;">Rs.{{product.strikeAmount}} </span><span
+                  style="color: green;">{{product.discount}}%OFF</span></ion-label><br>
+              <ion-label style="    font-weight: bold;
+              color: black;">Rs.{{product.finalPrice}}</ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-item>
+
+              <button style="    border-radius: 50px;
+            width: 30px;
+            height: 30px;"><ion-icon name="heart-outline" style="vertical-align: middle;"></ion-icon>
+              </button>
+
+              <ion-button>Add To
+                Cart</ion-button>
+            </ion-item>
+
+          </ion-row>
+
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-row>
+    <ion-col size="6">
+      <ion-button expand="block" style="margin: 0px;">Filter <ion-icon name="filter-outline"></ion-icon></ion-button>
+    </ion-col>
+    <ion-col size="6"><ion-button expand="block" style="margin: 0px;">Sort By <ion-icon
+          name="chevron-down-outline"></ion-icon></ion-button></ion-col>
+
+  </ion-row>
+</ion-footer>
+<ion-content hidden>
+
   <div class="main-content">
     <div class="collection_images">
       <!-- <img class="img-container" src="assets/pendant.webp" alt=""> -->
       <img class="img-container" src="assets/homeImg/product_up.png" alt="">
     </div>
-    <div class="filter-row mb-12" #stickyMenu [class.sticky]="sticky">
+    <!-- <ion-list>
+      <ion-item>
+        <ion-select aria-label="Fruit" placeholder="Select all fruits that apply" [multiple]="true"
+          [(ngModel)]="selectedCatogoryArray">
+          <ion-select-option value="apples">Apples</ion-select-option>
+          <ion-select-option value="oranges">Oranges</ion-select-option>
+          <ion-select-option value="bananas">Bananas</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list> -->
+    <div class="filter-row mb-12" #stickyMenu [class.sticky]="sticky" hidden>
       <!-- [formGroup]="filterForm" -->
       <form class="w-100 btm-line" [formGroup]="filterForm">
         <div class=" flex-custom">
@@ -56,9 +117,9 @@
             <div class="dropdown-content" [class.sticky-dropdown]="sticky">
               <div class="flex-custom mb-3">
                 <input type="text" formControlName="minPrice" [(ngModel)]="minValue" class="priceRange"
-                  autocomplete="off" (keyUp)="changePrice($event,'min')" [ngModelOptions]="{standalone: true}"> -
+                  autocomplete="off" (keyUp)="changePrice($event,'min')"> -
                 <input type="text" formControlName="maxPrice" [(ngModel)]="maxValue" class="priceRange"
-                  autocomplete="off" (keyUp)="changePrice($event,'max')" [ngModelOptions]="{standalone: true}">
+                  autocomplete="off" (keyUp)="changePrice($event,'max')">
               </div>
               <!-- <ngx-slider [options]="slideOptions" (userChange)="filterByPrice($event,'price')" [(value)]="minValue" [(highValue)]="maxValue"></ngx-slider> -->
             </div>

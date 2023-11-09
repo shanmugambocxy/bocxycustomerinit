@@ -151,7 +151,7 @@ const routes: Routes = [
     loadChildren: () => import('./all_products/productfindstore/productfindstore.module').then(m => m.ProductfindstorePageModule)
   },
   {
-    path: 'product-details/:data',
+    path: 'product-details',
     loadChildren: () => import('./all_products/product-details/product-details.module').then(m => m.ProductDetailsPageModule)
   },
 

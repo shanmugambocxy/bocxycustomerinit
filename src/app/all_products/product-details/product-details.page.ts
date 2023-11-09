@@ -13,6 +13,17 @@ import * as _ from 'lodash';
 export class ProductDetailsPage implements OnInit {
   currentProductDetails: any
   panelOpenState: any
+  currentImageNew = 'https://ecommapi.bocxy.com//files/admin-files-1696510268119.jpeg';
+  imagelist: any = [
+    {
+      'id': 1,
+      'src': 'https://ecommapi.bocxy.com//files/admin-files-1696510268119.jpeg'
+    },
+    {
+      'id': 2,
+      'src': 'https://ecommapi.bocxy.com//files/admin-files-1696566743496.jpeg'
+    }
+  ]
   productPolicies = [
     { img: 'assets/homeImg/lifetime_service.webp', Name: 'Lifetime Plating Service' },
     { img: 'assets/homeImg/warranty.png', Name: '6 Month Warranty' },
@@ -32,39 +43,39 @@ export class ProductDetailsPage implements OnInit {
   ) { }
 
   async ngOnInit() {
-    this.currentProductDetails = history.state.data
+    // this.currentProductDetails = history.state.data
     // let param= this.activeRoute.queryParamMap.subscribe(e=>{
     //   this.currentProductDetails=e['productDetails']
     // }) 
 
-    this.currentImage = this.currentProductDetails.productImages[0]
-    this.productImgList = []
-    this.currentProductDetails.productImages.map((e: any) => {
-      this.productImgList.push({
-        imgUrl: e, active: false
-      })
-    })
-    console.log(this.currentProductDetails)
-    this.recentlyViewedList()
-    let userData = this.util.getObservable().subscribe((res) => {
-      if (res.currentUserData && res.currentUserData) {
-        this.currentUserData = res.currentUserData
-        // this.currentUserData.productsViewed['productId'].push(this.currentProductDetails.productId)
-        this.wishList = res.addWishlistCount ? res.addWishlistCount : []
-        this.cartList = res.addCartlistCount ? res.addCartlistCount : []
-        this.wishList.forEach(e => {
-          this.addToWishlist = this.currentProductDetails.productId == e?._id && !this.addToWishlist ? true : false
-        })
-      } else {
-        this.wishList = res.addWishlistCount || []
-        this.cartList = res.addCartlistCount || []
-        // if(localStorage.getItem('addToCartList')) this.cartList=localStorage.getItem('addToCartList')
-        this.wishList.forEach(e => {
-          this.addToWishlist = this.currentProductDetails.productId == e?._id && !this.addToWishlist ? true : false
-        })
-      }
+    // this.currentImage = this.currentProductDetails.productImages[0]
+    // this.productImgList = []
+    // this.currentProductDetails.productImages.map((e: any) => {
+    //   this.productImgList.push({
+    //     imgUrl: e, active: false
+    //   })
+    // })
+    // console.log(this.currentProductDetails)
+    // this.recentlyViewedList()
+    // let userData = this.util.getObservable().subscribe((res) => {
+    //   if (res.currentUserData && res.currentUserData) {
+    //     this.currentUserData = res.currentUserData
+    // this.currentUserData.productsViewed['productId'].push(this.currentProductDetails.productId)
+    //     this.wishList = res.addWishlistCount ? res.addWishlistCount : []
+    //     this.cartList = res.addCartlistCount ? res.addCartlistCount : []
+    //     this.wishList.forEach(e => {
+    //       this.addToWishlist = this.currentProductDetails.productId == e?._id && !this.addToWishlist ? true : false
+    //     })
+    //   } else {
+    //     this.wishList = res.addWishlistCount || []
+    //     this.cartList = res.addCartlistCount || []
+    //     // if(localStorage.getItem('addToCartList')) this.cartList=localStorage.getItem('addToCartList')
+    //     this.wishList.forEach(e => {
+    //       this.addToWishlist = this.currentProductDetails.productId == e?._id && !this.addToWishlist ? true : false
+    //     })
+    //   }
 
-    });
+    // });
 
     await this.getAllProduct()
   }
@@ -238,6 +249,8 @@ export class ProductDetailsPage implements OnInit {
       console.log('error in update in customer data', err)
     })
   }
-
+  selectImage(pic: any) {
+    this.currentImageNew = pic.src;
+  }
 
 }
