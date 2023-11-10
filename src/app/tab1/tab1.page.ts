@@ -51,7 +51,7 @@ export class Tab1Page implements OnInit {
   genderServiceList = [];
   storeName: string;
   serviceGroups: any[];
-
+  labelList: any = [];
 
   productList: any = [{
     id: 1,
@@ -69,6 +69,8 @@ export class Tab1Page implements OnInit {
     discount: 10,
     finalPrice: 2999
   }]
+  quantity: number = 0;
+
   constructor(
     private navCtrl: NavController,
     private dashboardService: DashboardService,
@@ -86,6 +88,7 @@ export class Tab1Page implements OnInit {
     this.lang = 'en';
     this.translate.setDefaultLang('en');
     this.translate.use('en');
+
   }
 
   async openLocationSearch() {
@@ -282,6 +285,23 @@ export class Tab1Page implements OnInit {
     }).catch(err => {
       refresher.target.complete();
     });
+  }
+
+
+  incrementQty() {
+    this.quantity += 1;
+    let price = 100;
+    // this.price = this.quantity * price;
+  }
+  decrementQty() {
+    if (this.quantity > 0) {
+      this.quantity -= 1;
+      let price = 100;
+
+      // this.price = this.quantity * price;
+
+    }
+
   }
 }
 

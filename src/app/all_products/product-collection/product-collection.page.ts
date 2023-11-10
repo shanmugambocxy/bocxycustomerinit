@@ -5,6 +5,8 @@ import { NavigationHandler } from 'src/app/_services/navigation-handler.service'
 import * as $ from 'jquery';
 import { ProductService } from '../product_service/product.service';
 import { UtilService } from '../product_service/util.service';
+import { ModalController } from '@ionic/angular';
+import { FilterPage } from '../filter/filter.page';
 
 @Component({
   selector: 'app-product-collection',
@@ -86,7 +88,8 @@ export class ProductCollectionPage implements OnInit {
     private activeRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private productService: ProductService,
-    private util: UtilService,) { }
+    private util: UtilService,
+    public modalController: ModalController,) { }
   @HostListener('window:scroll', ['$event'])
   handleScroll() {
     const windowScroll = window.pageYOffset;
@@ -458,7 +461,25 @@ export class ProductCollectionPage implements OnInit {
     // return this.router.navigate([url],{queryParams:{productDetails:{...data}},  skipLocationChange: true})
   }
 
+  async openFilterPage(type: any) {
+    console.log('click', type);
 
+    const modal = await this.modalController.create({
+      component: FilterPage,
+      cssClass: 'my-custom-class',
+      componentProps: {
+        // storelocation: this.storeName,
+        // type: storeType
+        type: type
+      }
+    });
+    modal.onWillDismiss().then(response => {
+      if (response.data.type) {
+
+      }
+    });
+    return await modal.present();
+  }
 
 
 

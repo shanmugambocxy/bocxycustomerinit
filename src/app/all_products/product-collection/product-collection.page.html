@@ -51,16 +51,15 @@
 </ion-content>
 <ion-footer>
   <ion-row>
-    <ion-col size="6">
-      <ion-button expand="block" style="margin: 0px;">Filter <ion-icon name="filter-outline"></ion-icon></ion-button>
+    <ion-col size="6" (click)="openFilterPage(1)">
+      <ion-button expand="block" style="margin: 0px;">Filter <ion-icon name="filter-outline"
+          style="margin-left:10px"></ion-icon></ion-button>
     </ion-col>
-    <ion-col size="6"><ion-button expand="block" style="margin: 0px;">Sort By <ion-icon
-          name="chevron-down-outline"></ion-icon></ion-button></ion-col>
-
+    <ion-col size="6" (click)="openFilterPage(2)"><ion-button expand="block" style="margin: 0px;">Sort By <ion-icon
+          name="chevron-down-outline" style="margin-left:10px"></ion-icon></ion-button></ion-col>
   </ion-row>
 </ion-footer>
 <ion-content hidden>
-
   <div class="main-content">
     <div class="collection_images">
       <!-- <img class="img-container" src="assets/pendant.webp" alt=""> -->

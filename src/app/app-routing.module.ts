@@ -158,7 +158,15 @@ const routes: Routes = [
   {
     path: 'producttabs',
     loadChildren: () => import('./all_products/producttab/producttab.module').then(m => m.ProducttabPageModule)
+  },  {
+    path: 'filter',
+    loadChildren: () => import('./all_products/filter/filter.module').then( m => m.FilterPageModule)
   },
+  {
+    path: 'product-cart',
+    loadChildren: () => import('./all_products/product-cart/product-cart.module').then( m => m.ProductCartPageModule)
+  },
+
   // {
   //   path: 'producthome',
   //   loadChildren: './all_products/producttab.module#ProducttabPageModule'
