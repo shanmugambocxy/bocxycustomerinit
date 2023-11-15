@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon class="back-btn-size" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Order List</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <div class="mb-60">
+    <ion-card>
+      <ion-item>
+        <ion-label><span class="bold">Order ID - OD329671341922638100</span>
+        </ion-label>
+      </ion-item>
+
+      <ion-card-content>
+        <ion-row>
+          <ion-col size="7">
+            <div class="list-item">
+              <h3 class="bold">Wella Professionals Invigo Balance Senso Calm Sensitive Mask(150ml)</h3>
+            </div>
+            <div class="list-item">
+              Price:
+              <ion-text class="bold">Rs.730</ion-text>
+            </div>
+            <div class="list-item">
+              Qty:
+              <ion-text class="bold">1</ion-text>
+            </div>
+            <div class="list-item">
+              Order Status:
+              <ion-text class="bold">pending</ion-text>
+            </div>
+          </ion-col>
+          <ion-col size="4">
+            <ion-img src="../../assets/img/bridal-group.jpg"></ion-img>
+          </ion-col>
+        </ion-row>
+        <div class="divider"></div>
+        <div class="row">
+          <div class="col-12 col-md-10 hh-grayBox pt45 pb20">
+            <div class="row justify-content-between">
+              <div class="order-tracking completed">
+                <span class="is-complete"></span>
+                <p>Ordered<br><span>Mon, June 24</span></p>
+              </div>
+              <div class="order-tracking completed">
+                <span class="is-complete"></span>
+                <p>Shipped<br><span>Tue, June 25</span></p>
+              </div>
+              <div class="order-tracking">
+                <span class="is-complete"></span>
+                <p>Delivered<br><span>Fri, June 28</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <ion-row>
+          <ion-col size="7">
+            <div>
+              <h3 class="bold">
+                Shipping Address
+              </h3>
+            </div>
+            <div class="list-item">
+              Door No And Street:
+              <ion-text>TamilNadu</ion-text>
+            </div>
+            <div class="list-item">
+              City:
+              <ion-text>Chennai</ion-text>
+            </div>
+            <div class="list-item">
+              State:
+              <ion-text>TamilNadu</ion-text>
+            </div>
+            <div class="list-item">
+              Pincode:
+              <ion-text>600025</ion-text>
+            </div>
+            <div class="list-item">
+              Country:
+              <ion-text>India</ion-text>
+            </div>
+          </ion-col>
+        </ion-row>
+        <div class="divider"></div>
+        <div>
+          <h3 class="bold">
+            More Actions
+          </h3>
+        </div>
+        <div class="download-container">
+          <h3>Download Invoice</h3>
+          <a href="#" class="download-button">
+            Download
+          </a>
+        </div>
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

@@ -19,8 +19,9 @@ export class ProductHomePage implements OnInit {
   slideOpts = {
     initialSlide: 0,
     speed: 400,
-    slidesPerView: 1,
-    autoplay: false
+    slidesPerView: 2,
+    autoplay: true,
+    pagination: false
   };
   brandslideOpts = {
     initialSlide: 0,
@@ -34,6 +35,20 @@ export class ProductHomePage implements OnInit {
     { servicename: 'Youthful Haircut', description: 'Haircuts are not merely new hairstyles, but a new you!', image: './assets/img/offer2.jpg' },
     { servicename: 'Bridal Makeup', description: 'Your fairy tale wedding is now a reality!', image: './assets/img/offer1.jpg' },
     { servicename: 'Soothing Facial (Women)', description: 'Nourish your skin and calm your mind with a soothing facial', image: './assets/img/offer3.jpg' }
+  ];
+
+  topBrands: any = [{
+    id: 1,
+    src: 'http://flutter.bocxy.com/assets/images/tonyandguy.jpg'
+  },
+  {
+    id: 2,
+    src: 'https://flutter.bocxy.com/assets/images/loralParis.jpg'
+  },
+  {
+    id: 3,
+    src: 'https://flutter.bocxy.com/assets/images/macLogo.jpg'
+  }
   ];
   constructor(private nav: NavigationHandler,
     public modalController: ModalController,
@@ -74,6 +89,9 @@ export class ProductHomePage implements OnInit {
   }
   goBack(url: string) {
     this.nav.GoBackTo(url);
+  }
+  openCart() {
+    this.nav.GoForward('/product-cart')
   }
   goForward(item: any) {
 

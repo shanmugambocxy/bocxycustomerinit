@@ -1,19 +1,23 @@
 <ion-tabs>
   <ion-tab-bar color="light" slot="bottom">
     <ion-tab-button tab="producttab1" class="tab-home">
-      <ion-icon name="pricetags-outline"></ion-icon>
-      <!-- <ion-icon name="home-outline"></ion-icon> -->
+      <ion-icon name="cart-outline"></ion-icon>
       <ion-label>products</ion-label>
     </ion-tab-button>
-    <ion-tab-button tab="producttab2" class="tab-home">
+    <ion-tab-button class="tab-home" (click)="goToHome()">
       <ion-icon name="home-outline"></ion-icon>
-      <ion-label>products2</ion-label>
+      <ion-label>home</ion-label>
     </ion-tab-button>
     <ion-tab-button tab="producttab3" class="tab-home">
-      <ion-icon name="home-outline"></ion-icon>
-      <ion-label>products3</ion-label>
-    </ion-tab-button>
 
+      <ion-icon name="help-buoy"></ion-icon>
+      <ion-label>supports</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="producttab3" class="tab-home">
+
+      <ion-icon name="ellipsis-horizontal-circle"></ion-icon>
+      <ion-label>more</ion-label>
+    </ion-tab-button>
     <!-- 
     <ng-container *ngIf="skipLogin;else enableTab3">
       <ion-tab-button (click)="gotoLogin($event)" class="tab-mybookings">
@@ -38,23 +42,20 @@
   </ion-tab-bar>
 
 </ion-tabs>
+<!-- <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+  <ion-fab-button>
 
-<!-- 
-<ion-tabs>
-  <ion-tab-bar mode="ios" slot="bottom">
-    <ion-tab-button tab="producttab1" layout="icon-top">
-      <ion-icon name="flash"></ion-icon>
-      <ion-label>Products</ion-label>
-    </ion-tab-button>
-
-    <ion-tab-button tab="tab2" layout="icon-top">
-      <ion-icon name="apps"></ion-icon>
-      <ion-label>List</ion-label>
-    </ion-tab-button>
-
-    <ion-tab-button tab="tab3" layout="icon-top">
-      <ion-icon name="send"></ion-icon>
-      <ion-label>Profile</ion-label>
-    </ion-tab-button>
-  </ion-tab-bar>
-</ion-tabs> -->
+    <ion-icon name="home-outline"></ion-icon>
+  </ion-fab-button>
+  <ion-fab-list side="top">
+    <ion-fab-button color="light">
+      <ion-icon name="logo-facebook"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button color="light">
+      <ion-icon name="logo-twitter"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button color="light">
+      <ion-icon name="logo-vimeo"></ion-icon>
+    </ion-fab-button>
+  </ion-fab-list>
+</ion-fab> -->

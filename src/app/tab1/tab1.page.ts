@@ -6,14 +6,15 @@ import { DashboardService } from './tab1.service';
 import { Storage } from '@ionic/storage';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NavigationHandler } from '../_services/navigation-handler.service';
-import { NavigationExtras } from '@angular/router';
+import { ActivatedRoute, NavigationExtras } from '@angular/router';
 import { FindstorePage } from '../findstore/findstore.page';
 import { GlobalsearchPage } from '../globalsearch/globalsearch.page';
 import { CustomerNotificationService } from '../notifications/notfications.service';
 import { SharedService } from '../_services/shared.service';
 import { take } from 'rxjs/operators';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-
+import { FormGroup } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-tab1',
   templateUrl: './tab1.page.html',
@@ -28,6 +29,8 @@ export class Tab1Page implements OnInit {
     slidesPerView: 1,
     autoplay: false
   };
+
+
   brandslideOpts = {
     initialSlide: 0,
     slidesPerView: 2,
@@ -70,7 +73,25 @@ export class Tab1Page implements OnInit {
     finalPrice: 2999
   }]
   quantity: number = 0;
+  paymentPage: any;
+  detailsForm: FormGroup;
+  userData: any;
 
+
+  bankRefNo!: any;
+  order_no!: any;
+  message!: any;
+  order_amt: any;
+  allSearchList: any = [];
+  searchList: any = [{
+    name: 'perfume'
+  }, {
+    name: 'cream'
+  }, {
+    name: 'oil'
+  }, {
+    name: 'face wash'
+  },];
   constructor(
     private navCtrl: NavController,
     private dashboardService: DashboardService,
@@ -83,11 +104,14 @@ export class Tab1Page implements OnInit {
     private nav: NavigationHandler,
     public modalController: ModalController,
     public translate: TranslateService,
-    public TranslateModule: TranslateModule
+    public TranslateModule: TranslateModule,
+
+    private route: ActivatedRoute, private http: HttpClient
   ) {
     this.lang = 'en';
     this.translate.setDefaultLang('en');
     this.translate.use('en');
+    this.allSearchList = this.searchList;
 
   }
 
@@ -147,7 +171,46 @@ export class Tab1Page implements OnInit {
     if (!this.skipLogin) {
       this.getNotificationsCount();
     }
+    this.paymentinit();
+  }
 
+  paymentinit() {
+    this.route.queryParams.subscribe(params => {
+      console.log('params', params);
+
+      this.order_no = params['id'];
+      this.bankRefNo = params['ref'];
+      console.log(this.order_no);
+      console.log(this.bankRefNo);
+      this.checkStatus();
+    });
+  }
+
+  checkStatus() {
+    const data = {
+      reference_no: this.bankRefNo,
+      order_no: this.order_no
+    }
+    this.http.post('http://localhost:3001/api/checkStatus', data, { responseType: 'json' }).subscribe(
+      (response: any) => {
+        console.log(response);
+        console.log("order_status", response.order_status);
+        if (response.order_status === 'Shipped') {
+          this.message = 'Payment Successful!';
+          this.bankRefNo = response.reference_no;
+          this.order_no = response.order_no;
+          this.order_amt = response.order_amt;
+        } else {
+          this.message = 'Payment failed!';
+          this.bankRefNo = response.reference_no;
+          this.order_no = response.order_no;
+          this.order_amt = response.order_amt;
+        }
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
   }
 
   getServicegroup() {
@@ -303,6 +366,34 @@ export class Tab1Page implements OnInit {
     }
 
   }
+
+  addressSelection(val, data?: any, type?: any) {
+    this.detailsForm.get('addressType').setValue(val);
+    if (val === 'exist') {
+      this.detailsForm.get('address').setValue(data.doorNoAndStreet ? data.doorNoAndStreet : '');
+      this.detailsForm.get('cityName').setValue(data.city ? data.city : '');
+      this.detailsForm.get('stateName').setValue(data.state ? data.state : '');
+      this.detailsForm.get('pinCode').setValue(data.pincode ? data.pincode : '');
+      this.detailsForm.get('countryName').setValue(data.country ? data.country : '');
+      this.detailsForm.get('landmark').setValue(data.landmark ? data.landmark : '');
+
+    }
+  }
+
+  getItems(event: any) {
+    const val = event.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() !== '') {
+      // this.isItemAvailable = true;
+      this.allSearchList = this.searchList.filter((item) => {
+        return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    } else {
+      this.allSearchList = this.searchList;
+    }
+  }
+
 }
 
 

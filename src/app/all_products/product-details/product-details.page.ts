@@ -1,19 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductService } from '../product_service/product.service';
 import { Router } from '@angular/router';
 import { UtilService } from '../product_service/util.service';
 // import { MatSnackBar } from '@angular/material/snack-bar';
 import * as $ from 'jquery';
 import * as _ from 'lodash';
+import { NavigationHandler } from 'src/app/_services/navigation-handler.service';
+import { IonSlides } from '@ionic/angular';
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.page.html',
   styleUrls: ['./product-details.page.scss'],
 })
 export class ProductDetailsPage implements OnInit {
+  @ViewChild('homeSlider') slides: IonSlides;
+
   currentProductDetails: any
   panelOpenState: any
   currentImageNew = 'https://ecommapi.bocxy.com//files/admin-files-1696510268119.jpeg';
+  slideOpts = {
+    initialSlide: 0,
+    speed: 400,
+    slidesPerView: 2,
+    // autoplay: true,
+    pagination: false
+  };
   imagelist: any = [
     {
       'id': 1,
@@ -38,7 +49,8 @@ export class ProductDetailsPage implements OnInit {
   currentImage: any;
   productImgList: any;
   recentList: any[];
-  constructor(private productService: ProductService, private router: Router, private util: UtilService
+  constructor(private productService: ProductService, private router: Router, private util: UtilService,
+    private nav: NavigationHandler,
     // , private snackBar: MatSnackBar
   ) { }
 
@@ -253,4 +265,14 @@ export class ProductDetailsPage implements OnInit {
     this.currentImageNew = pic.src;
   }
 
+  slidePrev() {
+    this.slides.slidePrev();
+
+  }
+  slideNext() {
+    this.slides.slideNext();
+  }
+  goBack(url: string) {
+    this.nav.GoBackTo(url);
+  }
 }

@@ -79,7 +79,8 @@
         "HELP_SUPPORT": "Help & Support",
         "SIGN_OUT": "Sign Out",
         "SIGN_IN": "Sign in",
-        "PRODUCTS": "Products"
+        "PRODUCTS": "Products",
+        "ORDERS": "Orders"
     },
     "TAB_MENU_ITEMS": {
         "HOME": "Home",

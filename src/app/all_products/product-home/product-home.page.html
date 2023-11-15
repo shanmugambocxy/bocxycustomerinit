@@ -13,16 +13,35 @@
         <ng-template #chooseBlock> Choose Store </ng-template>
       </div>
     </ion-title>
-    <ion-buttons slot="end">
+    <ion-buttons slot="end" id="notify-btn" class="notification-btn">
+      <ion-button slot="end" size="small" fill="clear">
+        <ion-icon name="heart-outline" slot="end" tyle="font-size: larger;
+        margin-right: 10px;"></ion-icon>
+        <!-- <ion-icon name="cart-outline" slot="end" style="font-size: larger;
+        margin-right: 10px;" (click)="openCart()"></ion-icon> -->
+        <ion-badge color="danger" id="iosbadge" class="notify-badge ion-text-center" slot="end">
+          {{1}}
+        </ion-badge></ion-button>
+
+      <ion-button size="small" fill="clear" color="primary" (click)="openCart()">
+        <ion-icon name="cart-outline" slot="end"></ion-icon>
+
+        <ion-badge color="danger" id="iosbadge" class="notify-badge ion-text-center" slot="end">
+          {{1}}
+        </ion-badge>
+      </ion-button>
+    </ion-buttons>
+    <!-- <ion-buttons slot="end">
       <ion-icon name="heart-outline" slot="end" tyle="font-size: larger;
       margin-right: 10px;"></ion-icon>
       <ion-icon name="cart-outline" slot="end" style="font-size: larger;
-      margin-right: 10px;"></ion-icon> </ion-buttons>
+      margin-right: 10px;" (click)="openCart()"></ion-icon> </ion-buttons> -->
 
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-searchbar></ion-searchbar>
   <div class="special-offers">
     <ion-item lines="none" class="item-height" (click)="openLocationSearch()">
       <div class="heading">
@@ -58,60 +77,43 @@
       <div class="heading">Top Brands</div>
 
     </ion-item>
-
-
     <div>
       <div class="service-buttons">
-        <!-- <ion-card class="icon-card" *ngFor="let service of serviceGroups"
-          (click)="goForward('/seemoreservice/'+service.serviceGroupId)"> -->
-        <ion-grid>
-
+        <!-- <ion-grid>
           <ion-row>
-            <!-- <ion-col>
-              <div style="height: 100%; display: flex; align-items: center; justify-content: center;">
-                <ion-card>
-                  <img [src]="'http://flutter.bocxy.com/assets/images/tonyandguy.jpg' ">
-                </ion-card>
-              </div>
-            </ion-col> -->
-            <ion-col>
+            <ion-col *ngFor="let brand of topBrands">
               <ion-card class="icon-card ioncard">
                 <div>
-                  <!-- <img [src]="'https://bocxy-merchant-new.s3.ap-south-1.amazonaws.com/'+service.icon" /> -->
-                  <img [src]="'http://flutter.bocxy.com/assets/images/tonyandguy.jpg' ">
-                  <!-- <div class="title-s">{{service.name}}</div> -->
+                  <img [src]="brand.src">
                 </div>
               </ion-card>
             </ion-col>
             <ion-col>
-
               <ion-card class="icon-card ioncard">
                 <div>
-                  <!-- <img [src]="'https://bocxy-merchant-new.s3.ap-south-1.amazonaws.com/'+service.icon" /> -->
-                  <img [src]="'http://flutter.bocxy.com/assets/images/tonyandguy.jpg'">
-                  <!-- <div class="title-s">{{service.name}}</div> -->
+                  <img [src]="'https://flutter.bocxy.com/assets/images/loralParis.jpg'">
                 </div>
               </ion-card>
             </ion-col>
             <ion-col>
-
               <ion-card class="icon-card ioncard">
                 <div>
-                  <!-- <img [src]="'https://bocxy-merchant-new.s3.ap-south-1.amazonaws.com/'+service.icon" /> -->
-                  <img [src]="'http://flutter.bocxy.com/assets/images/tonyandguy.jpg' ">
-                  <!-- <div class="title-s">{{service.name}}</div> -->
+                  <img [src]="'https://flutter.bocxy.com/assets/images/macLogo.jpg' ">
                 </div>
               </ion-card>
             </ion-col>
-
           </ion-row>
+        </ion-grid> -->
 
-        </ion-grid>
-
-
+        <ion-slides [options]="slideOpts" pager="true">
+          <ion-slide *ngFor="let brand of topBrands">
+            <img class=" d-block w-100" [src]="brand.src" alt="First slide" style="height: 100px;">
+          </ion-slide>
+        </ion-slides>
       </div>
     </div>
-
-
   </ion-list>
+  <ion-card>
+    <img [src]=" 'http://flutter.bocxy.com/assets/images/bannerImage012.jpg' ">
+  </ion-card>
 </ion-content>

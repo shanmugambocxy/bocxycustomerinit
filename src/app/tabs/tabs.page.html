@@ -1,8 +1,6 @@
-<ion-tabs
-  [ngClass]="
+<ion-tabs [ngClass]="
 translate.currentLang ? 'font-' + translate.currentLang : ''
-"
->
+">
   <ion-tab-bar color="light" slot="bottom">
     <ion-tab-button tab="tab1" class="tab-home">
       <ion-icon name="home-outline"></ion-icon>
@@ -38,13 +36,7 @@ translate.currentLang ? 'font-' + translate.currentLang : ''
       </ion-tab-button>
     </ng-template>
   </ion-tab-bar>
-  <ion-fab
-    vertical="bottom"
-    horizontal="center"
-    mode="ios"
-    slot="fixed"
-    class="home-fab"
-  >
+  <ion-fab vertical="bottom" horizontal="center" mode="ios" slot="fixed" class="home-fab" (click)="openProducts()">
     <ion-fab-button color="light">
       <img src="./assets/icon/bocxy_icon.svg" />
     </ion-fab-button>

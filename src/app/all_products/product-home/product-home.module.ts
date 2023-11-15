@@ -22,7 +22,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     TranslateModule,
     FontAwesomeModule
   ],
-  declarations: [ProductHomePage, ProducttabPage],
+  declarations: [ProductHomePage],
   providers: [FindStoreService, CustomerNotificationService]
 })
 export class ProductHomePageModule { }

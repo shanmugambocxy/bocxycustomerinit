@@ -82,7 +82,9 @@ export class ProductpagePage implements OnInit {
 
     // return this.router.navigate([url],{queryParams:{productDetails:{...data}},  skipLocationChange: true})
   }
-
+  openCart() {
+    this.nav.GoForward('/product-cart')
+  }
 
   goBack(url: string) {
     this.nav.GoBackTo(url);

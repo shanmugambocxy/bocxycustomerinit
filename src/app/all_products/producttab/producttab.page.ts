@@ -21,5 +21,9 @@ export class ProducttabPage implements OnInit {
     console.log('tabs');
 
   }
+  goToHome() {
+    this.navCtrl.navigateRoot('/home');
+
+  }
 
 }

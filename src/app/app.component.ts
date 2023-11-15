@@ -99,6 +99,16 @@ export class AppComponent implements OnInit {
         hide: false
       },
       {
+        title: 'SIDE_MENU_ITEMS.ORDERS',
+        // url: '/product-home',
+        // url: '/producthome',
+        // url: '/productpage',
+        url: '/product-order-list',
+        direct: 'forward',
+        icon: 'document-text-outline',
+        hide: false
+      },
+      {
         title: 'SIDE_MENU_ITEMS.MY_BOOKINGS',
         url: this.skipLogin ? '/login' : '/home/tabs/tab3',
         direct: 'forward',

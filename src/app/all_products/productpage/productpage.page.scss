@@ -62,14 +62,18 @@
         }
 
         &.colr_img {
-            width: 325px;
-            height: 290px;
+            // width: 325px;
+            // height: 290px;
+            width: 200px;
+            height: 200px;
         }
 
         &.circle_img {
             border-radius: 50%;
-            width: 300px;
-            height: 320px;
+            // width: 300px;
+            // height: 320px;
+            width: 200px;
+            height: 200px;
             border: none
         }
     }
@@ -94,4 +98,103 @@
 
 .display_div {
     display: flex !important;
+}
+
+.notification-btn {
+    position: relative;
+    margin-right: 5px;
+
+    ion-button {
+        width: 50px;
+    }
+
+    ion-icon {
+        font-size: 1.5rem;
+        color: #444;
+    }
+
+    .notify-badge {
+        position: absolute;
+        left: 22px;
+        width: 20px;
+        height: 20px;
+        padding: 4px;
+        top: 0px;
+        font-size: 12px;
+        border-radius: 50%;
+    }
+}
+
+.special-offers {
+    .swiper-slide img {
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 10px;
+    }
+
+    ion-card.offer-card {
+        min-height: 22vh;
+        width: 100%;
+        margin: 0 8px 8px 0;
+        text-align: start !important;
+        border-radius: 0;
+        box-shadow: none;
+        border-bottom: 1px solid #ddd;
+
+        ion-card-header {
+            width: 100%;
+            padding: 0 2px;
+
+            ion-card-title {
+                color: #797979;
+                font-size: 0.8rem;
+                font-weight: bold;
+            }
+
+            ion-card-subtitle {
+                font-size: 0.6rem;
+                color: #959595;
+            }
+        }
+
+        ion-card-content {
+            color: #787878;
+            width: 100%;
+            font-size: 0.7rem;
+            padding: 6px 2px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 10px;
+        }
+    }
+}
+
+
+
+
+
+.scrolling-wrapper {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    width: 100%;
+
+    .card {
+        display: inline-block;
+        margin: 0 0 0px 5px;
+        width: 85%;
+        max-width: fit-content;
+    }
+}
+
+h3 {
+    font-size: small;
+    padding: 0px;
+    margin: 0px;
 }

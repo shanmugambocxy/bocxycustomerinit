@@ -1,9 +1,126 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>product-cart</ion-title>
+
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon class="back-btn-size" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Cart</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content style="--background: #80808014;">
+  <ion-list class="list-style">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-label style="    font-size: medium;
+          font-weight: bold;">ITEMS</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="3">
+          <ion-avatar>
+            <img [src]="'https://ecommapi.bocxy.com//files/admin-files-1696566743496.jpeg'" style="margin-top: 20%;">
+          </ion-avatar>
+        </ion-col>
+        <ion-col size="9">
+          <ion-label>Product1</ion-label>
+          <ion-item lines="none" class="ion-no-padding ">
+            <span style="text-decoration: line-through;">₹399</span><br>
+            <ion-label style="    margin-left: 5px;
+            color: green">₹2999</ion-label>
+          </ion-item>
+          <ion-item lines="none" class="ion-no-padding ">
+            <ion-button clear outline (click)="incrementQty()" class="btn-incr"> <ion-icon
+                name="add-circle"></ion-icon></ion-button>
+            <ion-input disabled="true" [(ngModel)]="quantity" style="max-width: 30%;
+          margin-bottom: 0px;
+          margin-top: 0px;
+          height: 30px;"></ion-input>
+            <ion-button clear outline (click)="decrementQty()" class="btn-decr"><ion-icon
+                name="remove-circle"></ion-icon></ion-button>
+          </ion-item>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+
+  </ion-list>
+
+  <ion-list class="list-style">
+    <ion-grid>
+      <ion-row style="text-align: center;">
+        <ion-col size="6" class="col_lbl_left">
+          <ion-label class="bold_lbl">SUB TOTAL</ion-label>
+        </ion-col>
+
+        <ion-col size="6" class="col_lbl_left">
+          <ion-label class="bold_lbl">Rs. {{subTotal}}</ion-label>
+        </ion-col>
+        <ion-col size="6" class="col_lbl_left">
+          <ion-button (click)="addTipChange()">Add Tip</ion-button>
+        </ion-col>
+        <ion-col size="6" class="col_lbl_left">
+          <ion-input type="number" [(ngModel)]="addTip"></ion-input>
+        </ion-col>
+        <ion-col size="6" class="col_lbl_left">
+          <ion-label class="bold_lbl">CGST</ion-label>
+        </ion-col>
+        <ion-col size="6" class="col_lbl_left">
+          <ion-label class="bold_lbl">Rs. {{subTotal*CGST}}</ion-label>
+        </ion-col>
+        <ion-col size="6" class="col_lbl_left">
+          <ion-label class="bold_lbl">SGST</ion-label>
+        </ion-col>
+        <ion-col size="6" class="col_lbl_left">
+          <ion-label class="bold_lbl">Rs. {{subTotal*SGST}}</ion-label>
+        </ion-col>
+        <ion-col size="6" *ngIf="discount" class="col_lbl_left">
+          <ion-label class="bold_lbl">DISCOUNT</ion-label>
+        </ion-col>
+        <ion-col size="6" *ngIf="discount" class="col_lbl_left">
+          <ion-label style="color: green;" class="bold_lbl">Rs.{{discount}}</ion-label>
+        </ion-col>
+        <ion-col size="6" *ngIf="addTip>0" class="col_lbl_left">
+          <ion-label class="bold_lbl">Tip</ion-label>
+        </ion-col>
+        <ion-col size="6" *ngIf="addTip>0" class="col_lbl_left">
+          <ion-label style="color: #222469;" class="bold_lbl"> Rs.{{addTip}}</ion-label>
+        </ion-col>
+        <ion-col size="6" *ngIf="redeemVoucher" class="col_lbl_left">
+          <ion-label class="bold_lbl">REDEEM VOUCHER</ion-label>
+        </ion-col>
+        <ion-col size="6" *ngIf="redeemVoucher" class="col_lbl_left">
+          <ion-label style="color: green;" class="bold_lbl">Rs.{{100}}</ion-label>
+        </ion-col>
+        <ion-col size="6" class="col_lbl_left">
+          <ion-label class="bold_lbl">GRAND TOTAL</ion-label>
+        </ion-col>
+        <ion-col size="6" class="col_lbl_left">
+          <ion-label class="bold_lbl">Rs.
+            <!-- {{subTotal+(subTotal*CGST)+(subTotal*SGST)+(addTip?addTip:0)-(discount?discount:0)-(redeemVoucher?redeemVoucher:0)}} -->
+            {{100}}
+          </ion-label>
+        </ion-col>
+
+        <ion-col size="6" *ngIf="isCash" class="col_lbl_left">
+          <ion-label class="bold_lbl">CHANGE</ion-label>
+        </ion-col>
+        <ion-col size="6" *ngIf="isCash" class="col_lbl_left">
+          <ion-label class="bold_lbl">Rs.{{payableAmount? payableAmount-totalAmount:0}}</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
 
 </ion-content>
+<ion-footer>
+  <ion-row>
+
+    <ion-col size="12" (click)="openCheckoutPage()"><ion-button expand="block"
+        style="margin: 0px;text-align: center;">Check out</ion-button></ion-col>
+  </ion-row>
+</ion-footer>

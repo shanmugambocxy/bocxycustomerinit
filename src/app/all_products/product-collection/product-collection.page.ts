@@ -41,7 +41,8 @@ export class ProductCollectionPage implements OnInit {
     productname: 'product2',
     strikeAmount: 3499,
     discount: 10,
-    finalPrice: 2999
+    finalPrice: 2999,
+    isWishlist: false
   },
   {
     id: 1,
@@ -49,7 +50,8 @@ export class ProductCollectionPage implements OnInit {
     productname: 'product1',
     strikeAmount: 3499,
     discount: 10,
-    finalPrice: 2999
+    finalPrice: 2999,
+    isWishlist: false
   },
   {
     id: 2,
@@ -57,7 +59,8 @@ export class ProductCollectionPage implements OnInit {
     productname: 'product2',
     strikeAmount: 3499,
     discount: 10,
-    finalPrice: 2999
+    finalPrice: 2999,
+    isWishlist: false
   }]
   // slideOptions: Options = {
   //   floor: 0,
@@ -83,6 +86,7 @@ export class ProductCollectionPage implements OnInit {
   selectedStone: any = [];
   selectedColour: any = [];
   selectedStyle: any = [];
+  isWishlist: boolean = false;
   constructor(private nav: NavigationHandler,
     private router: Router,
     private activeRoute: ActivatedRoute,
@@ -480,8 +484,13 @@ export class ProductCollectionPage implements OnInit {
     });
     return await modal.present();
   }
+  openCart() {
+    this.nav.GoForward('/product-cart')
+  }
+  onWish(item) {
+    item.isWishlist = !item.isWishlist;
 
-
+  }
 
   goBack(url: string) {
     this.nav.GoBackTo(url);

@@ -78,7 +78,8 @@
         "HELP_SUPPORT": "உதவி மையம்",
         "SIGN_OUT": "வெளியேறு",
         "SIGN_IN": "உள் நுழைக",
-        "PRODUCTS": "Products"
+        "PRODUCTS": "Products",
+        "ORDERS": "Orders"
     },
     "TAB_MENU_ITEMS": {
         "HOME": "முகப்பு",

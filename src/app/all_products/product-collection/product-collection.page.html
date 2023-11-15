@@ -1,11 +1,27 @@
 <ion-header>
   <ion-toolbar color="light">
     <ion-buttons slot="start">
-      <ion-button (click)="goBack('home/tabs/tab1')">
+      <ion-button (click)="goBack('productpage')">
         <ion-icon class="back-btn-size" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title>All Products</ion-title>
+    <ion-buttons slot="end" id="notify-btn" class="notification-btn">
+      <ion-button slot="end" size="small" fill="clear">
+        <ion-icon name="heart-outline" slot="end" tyle="font-size: larger;
+        margin-right: 10px;"></ion-icon>
+
+        <ion-badge color="danger" id="iosbadge" class="notify-badge ion-text-center" slot="end">
+          {{1}}
+        </ion-badge></ion-button>
+
+      <ion-button size="small" fill="clear" color="primary" (click)="openCart()">
+        <ion-icon name="cart-outline" slot="end"></ion-icon>
+        <ion-badge color="danger" id="iosbadge" class="notify-badge ion-text-center" slot="end">
+          {{1}}
+        </ion-badge>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -16,33 +32,56 @@
 
 
 <ion-content>
-  <ion-list>
+  <ion-list style="padding-top: 0px;">
     <ion-row>
       <ion-col *ngFor="let product of newProductList">
-        <ion-card (click)="routeToDetails($event)">
-          <ion-row>
+        <ion-card style="margin: 0;">
+          <ion-row (click)="routeToDetails($event)">
             <ion-col>
               <img [src]="product.src">
+              <!-- <ion-item class="product-item" lines="none">
+                <ion-label><ion-icon name="star"></ion-icon>4.5</ion-label>
+                <ion-label>250ml</ion-label>
+
+              </ion-item> -->
+
               <ion-label>{{product.productname}}</ion-label><br>
-              <ion-label> <span style="text-decoration: line-through;">Rs.{{product.strikeAmount}} </span><span
+              <ion-label style="font-size: small;font-weight: bold;"> <span
+                  style="text-decoration: line-through;">Rs.{{product.strikeAmount}} </span><span
                   style="color: green;">{{product.discount}}%OFF</span></ion-label><br>
               <ion-label style="    font-weight: bold;
-              color: black;">Rs.{{product.finalPrice}}</ion-label>
+              color: black; font-size:medium">Rs.{{product.finalPrice}}</ion-label>
+              <div class="product-item" style="text-align: center;
+              border: black 1px solid;
+              border-radius: 10px;">
+                <ion-label style="border-right: black 1px solid;"><ion-icon name="star" style="color: yellow;
+                    font-size: medium;
+                    vertical-align: text-top;"></ion-icon>4.5 &nbsp;</ion-label>
+                <ion-label style="font-weight: bold;">&nbsp;250ml</ion-label>
+              </div>
             </ion-col>
           </ion-row>
-          <ion-row>
-            <ion-item>
+          <!-- <ion-row>
+            <ion-col> -->
+          <ion-item>
 
-              <button style="    border-radius: 50px;
+            <button style="    border-radius: 50px;
             width: 30px;
-            height: 30px;"><ion-icon name="heart-outline" style="vertical-align: middle;"></ion-icon>
-              </button>
+            height: 30px;" (click)="onWish(product)">
+              <ion-icon name="heart" style="vertical-align: middle;color: red;font-size: larger;"
+                *ngIf="product.isWishlist"></ion-icon>
+              <ion-icon name="heart-outline" style="vertical-align: middle;font-size: larger;"
+                *ngIf="!product.isWishlist"></ion-icon>
 
-              <ion-button>Add To
-                Cart</ion-button>
-            </ion-item>
+            </button>
 
-          </ion-row>
+            <ion-button>Add To
+              Cart</ion-button>
+            <!-- <span style="color: #222469;
+            font-weight: bold;">(1)</span> -->
+          </ion-item>
+          <!-- </ion-col>
+          </ion-row> -->
 
         </ion-card>
       </ion-col>

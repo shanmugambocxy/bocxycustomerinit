@@ -166,6 +166,14 @@ const routes: Routes = [
     path: 'product-cart',
     loadChildren: () => import('./all_products/product-cart/product-cart.module').then( m => m.ProductCartPageModule)
   },
+  {
+    path: 'productpaymentmode',
+    loadChildren: () => import('./all_products/productpaymentmode/productpaymentmode.module').then( m => m.ProductpaymentmodePageModule)
+  },
+  {
+    path: 'product-order-list',
+    loadChildren: () => import('./all_products/product-order-list/product-order-list.module').then( m => m.ProductOrderListPageModule)
+  },
 
   // {
   //   path: 'producthome',

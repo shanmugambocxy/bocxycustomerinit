@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CustomerNotificationService } from '../notifications/notfications.service';
 import { IonicModule } from '@ionic/angular';
@@ -19,7 +19,8 @@ import { TranslateModule } from '@ngx-translate/core';
     IonicModule,
     FontAwesomeModule,
     TranslateModule,
-    Tab1PageRoutingModule
+    Tab1PageRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [Tab1Page],
   providers: [FindStoreService, CustomerNotificationService]

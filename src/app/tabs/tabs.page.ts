@@ -3,6 +3,7 @@ import { ModalController, NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { GlobalsearchPage } from '../globalsearch/globalsearch.page';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { NavigationHandler } from '../_services/navigation-handler.service';
 
 @Component({
   selector: 'app-tabs',
@@ -15,6 +16,7 @@ export class TabsPage implements OnInit {
   constructor(private storage: Storage, private modalController: ModalController, public translate: TranslateService,
     public TranslateModule: TranslateModule,
     public navCtrl: NavController,
+    private nav: NavigationHandler,
   ) {
     this.lang = 'en';
     this.translate.setDefaultLang('en');
@@ -42,5 +44,9 @@ export class TabsPage implements OnInit {
       this.navCtrl.navigateRoot('/login');
       return false;
     }
+  }
+
+  openProducts() {
+    this.nav.GoForward('/producttabs/tabs/producttab1');
   }
 }
